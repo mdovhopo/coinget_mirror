@@ -5,13 +5,13 @@ module.exports = {
   entry: './index.js',
   watch: true,
   output: {
-    path: path.join(__dirname, '/bundle'),
+    path: path.join(__dirname, '/public'),
     filename: 'index.js',
-    chunkFilename: '[name].bundle.js',
+    chunkFilename: '[name].build.js',
   },
   devServer: {
     inline: true,
-    port: 8020,
+    port: 8080,
   },
   resolve: {
     alias: {
@@ -49,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './index.html',
     })
   ]
 };

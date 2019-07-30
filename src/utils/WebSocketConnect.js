@@ -23,6 +23,5 @@ export const subscribeOnNotification = (exchange, currency, dispatch, ws) => {
     prevPrice: 0
   };
   dispatch(cacheCoinDataWrap(coinData, id));
-  console.log("About to send subscribe request", req);
   ws.send(JSON.stringify(req));
 };

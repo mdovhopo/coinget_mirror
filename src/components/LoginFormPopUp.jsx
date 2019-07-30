@@ -51,21 +51,16 @@ class LoginFormPopUp extends Component {
 
   submitForm = () => {
     const {name, email, password, checkbox} = this.state;
-    console.log("Submit form", name.valid, email.valid, password.valid, checkbox);
     if (!name.valid || !email.valid || !password.valid || !checkbox) {
       return this.setState({errorMsg: "Not valid data"});
     }
     switch (this.state.formMode) {
       case "register":
-        console.log("register",);
         this._sendAuthRequest();
         break;
       case "sign in":
         this._sendAuthRequest();
-        console.log("sign in");
         break;
-      default:
-        console.log("Unknown action");
     }
   };
 
@@ -81,8 +76,7 @@ class LoginFormPopUp extends Component {
     this.setState({[name]: {value: value, valid: isValid}, errorMsg: ""});
   };
 
-  handleCheckbox = (e) => {
-    console.log("Checkbox:", !this.state.checkbox);
+  handleCheckbox = () => {
     this.setState({checkbox: !this.state.checkbox, errorMsg: ""});
   };
 

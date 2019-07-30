@@ -2,7 +2,6 @@ import axios from "axios";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api/price/rate";
 const loginAPI = "https://coinget.io/api";
-const proxy = "https://cors-anywhere.herokuapp.com/";
 
 export const getCourse = (currentExchange, currentCurrency, currentDate) => {
   return axios.get(backendAPI, {
@@ -37,7 +36,7 @@ export const profileRedirect = (token) => {
       localStorage.setItem('token', token);
       window.location.href = "https://coinget.io/home";
     })
-    .catch(err => console.log("Profile Request", err));
+    .catch();
 };
 
 

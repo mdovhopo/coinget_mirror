@@ -18,11 +18,7 @@ import {connect} from "react-redux";
 import GetCoursePopUp from "Components/GetCoursePopUp";
 import {Parallax} from "react-scroll-parallax";
 import {getCourse} from "Utils/api";
-import {switchLoginFormWrap} from "Redux/actions/actionWrappers";
 import EventEmitter from "Utils/EventEmitter";
-
-const api = "https://backend-land.coinget.io/v3/public/api/price/rate";
-const proxy = "https://cors-anywhere.herokuapp.com/";
 
 const parallaxShapesParams = [
   {className: "parallax-shape-left sphere-1", y:[-1000, 1000], src: Sphere1},
@@ -58,7 +54,6 @@ class TryItNowSection extends Component {
   }
 
   setCurrentDate = (date) => {
-    console.log("DATE", date);
     this.setState({currentDate: date});
   };
 
@@ -71,7 +66,6 @@ class TryItNowSection extends Component {
   };
 
   openGetCourse = () => {
-    console.log("Send request to ", proxy + api);
     const {currentExchange, currentCurrency, currentDate} = this.state;
     if (currentExchange === "" || currentCurrency === "" || currentDate === 0)
       return this.setState({showGetCourse: true});
@@ -81,7 +75,6 @@ class TryItNowSection extends Component {
   };
 
   closeGetCourse = (e) => {
-    console.log("close", e);
     this.setState({showGetCourse: false, currentCourse: -1});
   };
 
@@ -107,7 +100,6 @@ class TryItNowSection extends Component {
   };
 
   render() {
-    // console.log("TryItNowSection");
     const parallaxXOff = this._getParallaxXOffset();
     return (
       <div className="try-it-now-section align-center">
