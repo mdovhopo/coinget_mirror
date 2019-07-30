@@ -1,0 +1,262 @@
+@import "variables";
+@import "mixins";
+
+.try-it-now-section {
+  width: 100%;
+  min-height: 800px;
+  background-size: cover;
+  justify-content: center;
+  display: flex;
+
+}
+
+.try-it-now-background-wrap {
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  min-height: 850px;
+}
+
+.try-it-now-background {
+  width: 100%;
+  min-width: 1920px;
+  min-height: 850px;
+}
+
+.try-it-now-inner-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 800px;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.65) 50%, black 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.65) 50%, black 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.65) 50%, black 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient startColorstr=‘ #4d000000 ’, endColorstr=‘ #000000 ’, GradientType=0;
+
+  p {
+    @include respond-to(desktop) {
+      font-size: 53px;
+    }
+  ;
+    @include respond-to(tablet) {
+      padding: {
+        top: 50px;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+      };
+      font-size: 45px;
+    }
+  ;
+    @include respond-to(mobile) {
+      padding: {
+        top: 50px;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+      };
+      font-size: 40px;
+    }
+  ;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: $white;
+  }
+
+  span {
+    @include respond-to(desktop) {
+      font-size: 28px;
+    }
+  ;
+    @include respond-to(tablet) {
+      padding: 0 10px;
+      font-size: 20px;
+    }
+  ;
+    @include respond-to(mobile) {
+      padding: 0 10px;
+      font-size: 20px;
+    }
+  ;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.41;
+    letter-spacing: normal;
+    color: $primary-color-light;
+  }
+}
+
+.heading {
+  text-align: center;
+  margin: 0 0;
+}
+
+.social-media-links {
+  margin: 50px 0;
+}
+
+.social-media-link {
+  width: 25px;
+  height: 25px;
+  margin: 0.75rem;
+  z-index: 101;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.try-it-now-btn {
+  font-size: 35px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.25rem;
+  z-index: 100;
+}
+
+.try-it-now-btn-container {
+  margin: {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+  };
+}
+
+.get-coin-btn-container {
+  @include respond-to(mobile) {
+    padding: 1.5rem;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
+  height: 100%;
+  z-index: 100;
+}
+
+.get-course-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include respond-to(desktop) {
+    flex-direction: row;
+  }
+  @include respond-to(tablet) {
+    flex-direction: column;
+  }
+  @include respond-to(mobile) {
+    flex-direction: column;
+  }
+}
+
+.get-course-line {
+  display: flex;
+  justify-content: space-between;
+
+  &:nth-child(2) {
+    @include respond-to(desktop) {
+      margin-left: 83px;
+    }
+  }
+
+  @include respond-to(tablet) {
+    width: 420px;
+  }
+  @include respond-to(mobile) {
+    width: 170px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.get-course-item {
+  &:nth-child(2) {
+    @include respond-to(desktop) {
+      margin-left: 83px;
+    }
+  }
+
+  @include respond-to(tablet) {
+    margin: 10px 0;
+  }
+  @include respond-to(mobile) {
+    margin: 10px 0;
+  }
+
+  .get-course-icon-wrap {
+    margin-top: 13px;
+    text-align: center;
+    transition: opacity .3s ease-in-out;
+
+    img {
+      height: 30px;
+    }
+  }
+
+  &:hover {
+    .get-course-icon-wrap {
+      opacity: 0;
+    }
+  }
+}
+
+.parallax-overlay {
+  position: absolute;
+  width: 100%;
+  min-height: 800px;
+  overflow: hidden;
+  top: 80px;
+  left: 0;
+  padding-top: 100px;
+  @include respond-to(mobile) {
+    display: none;
+  }
+}
+
+.parallax-shape-right {
+  position: absolute;
+  @include respond-to-custom(1px, 1440px) {
+    display: none;
+    position: relative;
+  };
+  left: calc(50% + 720px);
+}
+
+.parallax-shape-left {
+  position: absolute;
+  @include respond-to-custom(1px, 1440px) {
+    display: none;
+    position: relative;
+  };
+  right: calc(50% + 720px);
+}
+
+.sphere-1 {
+  right: calc(50% + 740px);
+}
+.sphere-2 {
+  right: calc(50% + 700px);
+}
+
+.sphere-3 {
+  right: calc(50% + 800px);
+
+}
+
+.cube-1 {
+  left: calc(50% + 740px);
+}
+.cube-2 {
+  left: calc(50% + 700px);
+}
+
+

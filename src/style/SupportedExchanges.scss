@@ -1,0 +1,75 @@
+@import "variables";
+@import "mixins";
+
+.exchanges-container {
+  display: flex;
+  justify-content: center;
+  .exchanges-wrap {
+    padding-top: 30px;
+    width: 100%;
+    max-width: 1400px;
+  }
+  .lines {
+    display: flex;
+    @include respond-to(desktop) {flex-direction: column;}
+    @include respond-to(tablet) {flex-direction: row;}
+    @include respond-to(mobile) {flex-direction: column;}
+    justify-content: space-around;
+  }
+  .line {
+    @include respond-to(desktop) {
+      display: flex;
+      padding: 0 0 0 10px;
+      height: 110px;
+      justify-content: center;
+      align-items: center;
+    }
+    @include respond-to(tablet) {
+      width: 50%;
+      flex-direction: column;
+      height: auto;
+    }
+    @include respond-to(mobile) {
+      width: 100%;
+      flex-direction: column;
+      height: auto;
+    }
+  }
+  .item {
+    @include respond-to(desktop) {  width: 33%;}
+    @include respond-to(tablet) {
+      width: 100%;
+      margin-bottom: 35px;
+      margin-top: 15px;
+    }
+    @include respond-to(mobile) {
+      width: 100%;
+      margin-bottom: 35px;
+      margin-top: 15px;
+    }
+    display: inline-flex;
+    justify-content: center;
+  }
+  .more {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+    a {
+      display: inline-flex;
+      align-items: center;
+    }
+    span {
+      font-size: 24.5px;
+      letter-spacing: 0.2px;
+      text-align: center;
+      color: #000;
+      margin-right: 18px;
+    }
+    img {
+      display: flex;
+      flex: 0 0 auto;
+      width: 9px;
+      height: 17px;
+    }
+  }
+}

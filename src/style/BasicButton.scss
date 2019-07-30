@@ -1,0 +1,56 @@
+@import "variables";
+
+.basic-btn {
+  text-align: center;
+  padding: {
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 1rem;
+    right: 1rem;
+  };
+  flex: 0 0 auto;
+  background: rgba(0, 0, 0, 0);
+  color: $text-color-light;
+  border: 1px solid $text-color-light;
+  display: block;
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $primary-color;
+  }
+  &:active {
+    background: $primary-color;
+    color: $black;
+    }
+}
+
+.rounded-btn {
+  font-size: 24px;
+  font-weight: 500;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+}
+
+.black-btn {
+  text-align: center;
+  color: $black;
+  border: 1px solid $background-color-dark;
+  &:hover {
+    background: $background-color-dark;
+    color: $white
+  }
+}
+
+.gold-btn {
+  max-height: 80px;
+  color: $white;
+  background: $primary-color;
+  border: 1px solid $primary-color;
+  &:hover {
+    background: transparent;
+  }
+  &:active {
+    border: 1px solid $white;
+    color: $primary-color;
+  }
+}

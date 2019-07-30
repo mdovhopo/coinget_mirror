@@ -1,0 +1,70 @@
+@import "variables";
+@import "mixins";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  .wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    @include respond-to(mobile) {flex-direction: column;}
+  }
+}
+
+.footer-first {
+  background-color: $background-color-light;
+  .wrap {
+    min-height: 120px;
+  }
+  span, a, a:visited {
+    color: $white;
+  }
+}
+
+.item {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include respond-to(mobile) {width: 100%; margin-top: 20px;margin-bottom: 10px;}
+  img {
+    margin-right: 20px;
+  }
+
+}
+
+.footer-second {
+  background-color: $black;
+  .wrap {
+    height: 82px;
+    justify-content: center;
+  }
+}
+
+.link {
+  margin: 0 10px;
+  position: relative;
+  span {
+    color: $primary-color;
+    &:hover {
+      opacity: 0.6;
+      text-decoration: none;
+    }
+  }
+  &:before {
+    @include respond-to(mobile) {display: none;};
+    content: '';
+    position: absolute;
+    left: -10px;
+    height: 100%;
+    width: 2px;
+    background-color: $primary-color;
+  }
+  &:first-child {
+    &:before {
+      display: none;
+  }
+  }
+}

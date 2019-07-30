@@ -1,0 +1,53 @@
+@import "variables";
+@import "mixins";
+
+.z-on-top {
+  z-index: 100;
+}
+
+html {
+  height: 100%;
+  font-family: Ubuntu, serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+.hide-mobile {
+  @include respond-to(mobile) {display: none};
+}
+
+.hide-tablet {
+  @include respond-to(tablet) {display: none;}
+}
+
+.hide-desktop {
+  @include respond-to(desktop) {display: none}
+}
+
+.black-bg {
+  background: $black;
+}
+
+.gold-text {
+  padding: 0.75rem;
+  color: $primary-color;
+  font-size: 30px;
+  letter-spacing: 6px;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-input {
+  width: 100%;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.67);
+  padding: 16px 25px;
+  margin-bottom: 31px;
+}
