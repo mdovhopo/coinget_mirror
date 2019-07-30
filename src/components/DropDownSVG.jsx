@@ -73,7 +73,6 @@ class DropDownSVG extends Component {
     // convert date to server time GMT+000
     let date = new Date(_date.getTime() + _date.getTimezoneOffset() * MS_PER_MINUTE);
     const custom = moment(date).format("YYYYMMDDHHmmss");
-    console.log("Calendar change", custom);
     this.setState({activeText: date.toDateString(), active: false});
     this.props.onItemClick(custom);
   };

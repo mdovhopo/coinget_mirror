@@ -22,7 +22,6 @@ class NavBar extends Component {
   }
 
   componentDidMount() {
-    console.log("token:", localStorage.getItem("token"));
     const token = localStorage.getItem("token");
     getProfile(token)
       .then(res => {
@@ -51,7 +50,7 @@ class NavBar extends Component {
 
   _renderLoginButton = () => (
     <li className="menu-item p-2">
-      <a className="menu-link" href='#'>
+      <a className="menu-link">
         <BasicButton onClick={this.state.authorized ?
           this.handleRedirect :
           this.handleLoginForm
@@ -92,7 +91,6 @@ class NavBar extends Component {
 
   render() {
     const { openMobileMenu } = this.state;
-    console.log("NavBar", this.props);
     return (
     <div className="navbar-dark black-bg align-center">
         <div className="menu-container navbar justify-content-between m-0 p-0">

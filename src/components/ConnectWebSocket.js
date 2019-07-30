@@ -10,7 +10,6 @@ class ConnectWebSocket extends Component {
     super(props);
     connectViaWebSocket(WSLink)
       .then(ws => {
-        console.log("WS Connected");
         ws.onmessage = (response) => {
           const receivedData = JSON.parse(response.data);
           // console.log(receivedData);

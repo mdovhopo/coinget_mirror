@@ -7,14 +7,12 @@ import {addExchangeWrap} from "Redux/actions/actionWrappers";
 class SubscribeOnCoins extends Component {
 
   api = "https://backend-land.coinget.io:20443/v3/public/api/info";
-  proxy = "https://cors-anywhere.herokuapp.com/";
 
   componentDidMount() {
-    axios.get(this.proxy + this.api + "/exchanges")
+    axios.get(this.api + "/exchanges")
       .then(response => {
-        console.log("Response received");
         if (response.status === 200) {
-          console.log(response.data);
+          console.log("Exchanges:", response.data);
           // TODO make one more request for markets via this API link
           // https://backend.coinget.io/v3/public/api/info/markets?exchangeId=<Exchange>
           const exchanges = response.data;
@@ -30,7 +28,6 @@ class SubscribeOnCoins extends Component {
               // currency request emulation, change setTimeout to API request when backend will be ready
               setTimeout(() => {
                 const currencies = ["ETH", "BTC"];
-                console.log(exchange + " fetched!");
                 const id = setInterval(() => {
                   if (this.props.ws && this.props.ws.readyState === WebSocket.OPEN) {
                     for (let i = 0; i < currencies.length; i++) {
