@@ -14,6 +14,12 @@
   background: $background-color-dark;
   color: $white;
   margin: 5px;
+
+  img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .login-header-content {
@@ -72,7 +78,6 @@
   vertical-align: baseline;
 
 
-
   &:before {
     content: '';
     height: 1px;
@@ -101,14 +106,16 @@
 
   input {
     border: 1px solid #acacac;
-    box-shadow: inset 0px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     width: 100%;
     border-radius: 6px;
     padding: 16px 25px;
     margin-bottom: 31px;
+
     &:last-child {
       margin-bottom: 15px;
     }
+
     &:active {
       border: 1px solid $primary-color;
     }
@@ -139,6 +146,12 @@
   padding-bottom: 10px;
 }
 
+.success-msg {
+  text-align: center;
+  color: var(--green);
+  padding-bottom: 10px;
+}
+
 .restore-password {
   display: flex;
   align-items: center;
@@ -155,7 +168,9 @@
   padding: 15px 40px !important;
   display: flex;
   justify-content: space-between !important;
-  @include respond-to(mobile) {flex-direction: column}
+  @include respond-to(mobile) {
+    flex-direction: column
+  }
 }
 
 .btn-black {
@@ -191,16 +206,16 @@
     }
 
     &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 2px;
-        left: 9px;
-        width: 6px;
-        height: 14px;
-        border: solid #cca210;
-        border-width: 0 2px 2px 0;
-        transform: rotate(45deg);
+      content: '';
+      display: block;
+      position: absolute;
+      top: 2px;
+      left: 9px;
+      width: 6px;
+      height: 14px;
+      border: solid #cca210;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
     }
 
     &:before {
@@ -220,6 +235,7 @@
       border: 2px solid #999;
     }
   }
+
   .not-checked {
     width: 170px;
     @include respond-to(mobile) {

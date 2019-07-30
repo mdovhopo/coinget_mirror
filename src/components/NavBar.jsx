@@ -50,7 +50,7 @@ class NavBar extends Component {
 
   _renderLoginButton = () => (
     <li className="menu-item p-2">
-      <a className="menu-link" href='#'>
+      <a className="menu-link">
         <BasicButton onClick={this.state.authorized ?
           this.handleRedirect :
           this.handleLoginForm
