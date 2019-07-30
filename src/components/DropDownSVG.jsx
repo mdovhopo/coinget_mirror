@@ -31,6 +31,7 @@ class DropDownSVG extends Component {
     this.state = {
       active: false,
       activeText: "",
+      selectedDate: ""
     };
   }
 
@@ -42,6 +43,7 @@ class DropDownSVG extends Component {
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <DateTimePicker
                 open={this.state.active}
+                value={this.state.selectedDate}
                 onChange={this.handleDateChange}
                 maxDate={new Date()}
                 maxDateMessage={"I wanna see the future too, but c'mon man"}
@@ -70,10 +72,10 @@ class DropDownSVG extends Component {
     }
   };
   handleDateChange = (_date) => {
+    this.setState({activeText: _date.toDateString(), active: false, selectedDate: _date.toString()});
     // convert date to server time GMT+000
     let date = new Date(_date.getTime() + _date.getTimezoneOffset() * MS_PER_MINUTE);
     const custom = moment(date).format("YYYYMMDDHHmmss");
-    this.setState({activeText: date.toDateString(), active: false});
     this.props.onItemClick(custom);
   };
   handleSelectOption = (text) => {

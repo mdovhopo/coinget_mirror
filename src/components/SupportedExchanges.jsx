@@ -58,7 +58,7 @@ class SupportedExchanges extends Component {
             </div>
           </div>
           <div className="more">
-            <a href="#">
+            <a href="/">
                     <span>
                         More
                     </span>

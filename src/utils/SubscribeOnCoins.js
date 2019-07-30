@@ -18,14 +18,14 @@ class SubscribeOnCoins extends Component {
           const exchanges = response.data;
           for (const exchange in  exchanges) {
             if (exchanges.hasOwnProperty(exchange)) {
-              // axios.get(proxy + api + "/markets", {
+              // axios.get(api + "/markets", {
               //   params: {
               //     exchangeId: exchange
               //   }
               // })
               //   .then(res => console.log(exchange + ": ", res.data))
               //   .catch(err => console.log(err));
-              // currency request emulation, change setTimeout to API request when backend will be ready
+              // currency request emulation, TODO: change setTimeout to API request when backend will be ready
               setTimeout(() => {
                 const currencies = ["ETH", "BTC"];
                 const id = setInterval(() => {
