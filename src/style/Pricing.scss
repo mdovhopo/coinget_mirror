@@ -1,0 +1,103 @@
+@import "variables";
+@import "mixins";
+
+.pricing-container {
+  padding-top: 46px;
+  padding-bottom: 44px;
+  display: flex;
+  justify-content: center;
+
+  .prising-wrap {
+    text-align: center;
+    width: 100%;
+    max-width: 1440px;
+  }
+  .price-item {
+    display: inline-block;
+    position: relative;
+  }
+  .name {
+    padding: 17px;
+    background-color: $background-color-dark;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+  }
+  .price {
+    padding: 12px;
+    border-bottom: 8px solid $primary-color;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+  .content {
+    background-color: $background-color;
+  }
+  .honeycomb {
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    width: 100%;
+  }
+  .footer {
+    padding: 0 12px 12px;
+    a {
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding: 10px;
+    }
+  }
+  .little-item {
+    width: 270px;
+    @include respond-to(tablet) {display: none}
+    @include respond-to-custom(0px, 1150px) {display: none}
+  }
+  .honeycomb-item {
+    width: 180px;
+    height: 160px;
+    position: relative;
+    left: 13px;
+  }
+  .sale {
+    display: block;
+    position: absolute;
+    top: -24px;
+    left: -52px;
+    .honeycomb {
+      height: auto !important;
+      background-color: transparent !important;
+      .honeycomb-item {
+        width: 203px;
+        height: 183px;
+      }
+    }
+  }
+  .big-item {
+    width: 360px;
+    @include respond-to-custom(0px, 1149px) {margin: 0;}
+    @include respond-to-custom(1150px, 9999px) {margin: 0 115px;}
+    .name {
+      padding-left: 70px;
+    }
+    .price {
+      padding: 0;
+      border-color: $white;
+    }
+    .honeycomb {
+      height: 250px;
+      background-color: $primary-color;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .footer {
+      background-color: $black;
+      padding: 22px 12px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+$mobile-size: 738px;
+$tablet-size: 992px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $mobile-size) {@content;}
+  } @else if $media == tablet {
+    @media only screen and (min-width: $mobile-size + 1) and (max-width: $tablet-size) {@content;}
+  } @if $media == desktop {
+    @media only screen and (min-width: $tablet-size + 1) {@content;}
+  }
+}
+
+@mixin respond-to-custom($low, $high) {
+  @media only screen and (min-width: $low) and (max-width: $high) {@content;}
+}
+
+@mixin wrapper($height) {
+  width: 100%;
+  max-width: 1440px;
+  height: $height;
+}
+
+@mixin svg-btn-animation($dash-array-start, $dash-array-end, $dashoffset) {
+    0% {
+      stroke-dasharray: $dash-array-start, $dash-array-end;
+      stroke-dashoffset: $dashoffset;
+      stroke-width: 8px;
+    }
+    100% {
+      stroke-dasharray: 760;
+      stroke-dashoffset: 0;
+      stroke-width: 2px;
+    }
+}

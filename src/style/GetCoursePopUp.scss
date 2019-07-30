@@ -1,0 +1,34 @@
+@import "variables";
+@import "mixins";
+
+.popup {
+  .popup-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 24px;
+    @include respond-to(mobile) {
+      font-size: 18px;
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    .popup-text {
+      text-align: center;
+    }
+    .popup-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40%;
+    }
+  }
+
+  .popup-header {
+    background-color: $background-color-dark;
+    color: white;
+  }
+}

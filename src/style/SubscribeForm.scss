@@ -1,0 +1,38 @@
+@import "mixins";
+@import "variables";
+
+.subscribe-section {
+  background-image: url("../assets/background-sabs.png");
+  display: flex;
+  justify-content: center;
+  padding: 60px 0 60px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.subscribe-form {
+  background-color: rgba(103, 108, 113, 0.65);
+  padding: 45px 145px 50px;
+  @include respond-to(tablet) {  padding: 45px 100px 50px; };
+  @include respond-to(mobile) {  padding: 45px 50px 50px; };
+}
+
+.form-name {
+  color: #fff;
+  text-align: center;
+  font-size: 30.5px;
+  letter-spacing: 6.1px;
+  margin-bottom: 36px;
+}
+
+.subscribe-section {
+  .button-white {
+    width: 300px;
+    height: 46px;
+    font-size: 24.5px;
+    margin-top: 20px;
+  }
+}

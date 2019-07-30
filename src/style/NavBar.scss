@@ -1,0 +1,70 @@
+@import "variables";
+@import "mixins";
+
+.menu {
+  @include respond-to(desktop) {
+    flex-direction: row !important;
+  };
+  @include respond-to(tablet) {
+    background: $background-color-dark;
+    display: flex;
+    min-width: 300px;
+    width: 50%;
+    right: 0;
+    top: 80px;
+    position: absolute;
+    flex-direction: column !important;
+    padding: 3rem !important
+  };
+  @include respond-to(mobile) {
+    background: $background-color-dark;
+    display: flex;
+    min-width: 300px;
+    width: 50%;
+    right: 0;
+    top: 80px;
+    position: absolute;
+    flex-direction: column !important;
+    padding: 2.5rem !important
+  };
+}
+
+.nav-logo {
+  @include respond-to(desktop) {  position: absolute; top: 0; left: -80px; }
+  @include respond-to(tablet) { padding: 1rem; display: block; position: relative; }
+  @include respond-to(mobile) { padding: 1rem; display: block; position: relative; }
+}
+
+.menu-link {
+  color: $text-color-light !important;
+  font-family: $font-family !important;
+  vertical-align: middle;
+  font-size: 18px !important;
+  &:hover {
+    text-decoration: none !important;
+    color: $primary-color !important;
+  }
+}
+
+.menu-item {
+  flex: 1 1 auto;
+  display: flex;
+  text-align: center;
+  @include respond-to(desktop) {flex-direction: column; justify-content: center;}
+  @include respond-to(tablet) {flex-direction: row; justify-content: start;}
+  @include respond-to(mobile) {flex-direction: row; justify-content: start;}
+}
+
+.menu-container {
+  height: 80px;
+  width: 100%;
+  max-width: 1440px ;
+}
+
+.open-menu {
+  display: block;
+}
+
+.close-menu {
+  display: none;
+}
