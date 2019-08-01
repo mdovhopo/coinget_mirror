@@ -19,6 +19,7 @@ import GetCoursePopUp from "Components/GetCoursePopUp";
 import {Parallax} from "react-scroll-parallax";
 import {getCourse} from "Utils/api";
 import EventEmitter from "Utils/EventEmitter";
+import ParallaxItem from "Components/ParallaxItem";
 
 const parallaxShapesParams = [
   {className: "parallax-shape-left sphere-1", y:[-1000, 1000], src: Sphere1},
@@ -103,14 +104,19 @@ class TryItNowSection extends Component {
     const parallaxXOff = this._getParallaxXOffset();
     return (
       <div className="try-it-now-section align-center">
-        <div className="try-it-now-background-wrap">
-          <Parallax disabled={false} y={[parallaxXOff, "200px"]} tagInner="div" tagOuter="div">
-          <img className="try-it-now-background" src={Background} alt=""/>
-          </Parallax>
-        </div>
+        {/*<div className="try-it-now-background-wrap">*/}
+        {/*  /!*<Parallax disabled={false} y={[parallaxXOff, "200px"]} tagInner="div" tagOuter="div">*!/*/}
+        {/*  <img className="try-it-now-background" src={Background} alt=""/>*/}
+        {/*  /!*</Parallax>*!/*/}
+        {/*</div>*/}
+        <ParallaxItem
+          image={Background}
+          startOffset={80}
+          speed={0.5}
+        />
         <div className="try-it-now-inner-section">
           <div className="heading">
-            <ParallaxOverlay />
+            {/*<ParallaxOverlay />*/}
             <p>CRYPTO TRADING ANALYTIC TOOL</p>
             <div className="px-1">
               <span>Desktop app for true profit and loss calculations across multiple exchanges</span>

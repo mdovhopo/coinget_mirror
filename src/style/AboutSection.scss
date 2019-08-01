@@ -16,7 +16,10 @@
 .description {
   max-width: 916px;
   font-size: 25px;
-  @include respond-to(mobile) {font-size: 16px};
+  @include respond-to(mobile) {
+    font-size: 16px
+  }
+;
   align-self: center;
   margin: 30px 15px;
   text-align: center;
@@ -24,7 +27,10 @@
 
 .bold {
   font-size: 30px;
-  @include respond-to(mobile) {font-size: 21px};
+  @include respond-to(mobile) {
+    font-size: 21px
+  }
+;
   font-weight: bold;
 }
 
@@ -35,19 +41,46 @@
 }
 
 .center-section {
-  @include respond-to(desktop) {order: 2}
-  @include respond-to(tablet) {order: 1}
-  @include respond-to(mobile) {order: 1}
-  padding-top: 40px;
+  @include respond-to(mobile) {
+    order: 1
+  }
+  @include respond-to-custom(1441px, -1) {
+    padding-top: 40px;
+    .center-honeycomb {
+      img {
+        width: 475px !important;
+      }
+    }
+  }
+  @include respond-to(mobile) {
+    .center-honeycomb {
+      img {
+        width: 325px !important;
+      }
+    }
+  }
+  padding-top: 20px;
   display: flex;
   justify-content: center;
-  width: 100%;
+
+  .center-honeycomb {
+    position: relative;
+
+    img {
+      width: 375px;
+    }
+
+    margin: 0 -55px;
+  }
 }
 
 .left-section {
-  @include respond-to(desktop) {order: 1}
-  @include respond-to(tablet) {order: 2}
-  @include respond-to(mobile) {order: 2}
+  @include respond-to(mobile) {
+    order: 2
+  }
+  @include respond-to(tablet) {
+    order: 2;
+  }
 }
 
 .right-section {
@@ -56,78 +89,129 @@
 
 .item-left {
   order: 1;
+
   .item-text {
     p {
       justify-content: flex-end;
     }
   }
+
   .item-image {
     left: -24px;
+    @include respond-to-custom($tablet-size, 1440px) {
+      img {
+        width: 140px;
+        margin-top: -10px;
+      }
+    }
+  }
+
+  &:first-child {
+    .item-text {
+      @include honeycomb-content(380px, 250px);
+    }
+  }
+
+  &:nth-child(2) {
+    .item-text {
+      @include honeycomb-content(300px, 208px);
+    }
+  }
+
+  &:last-child {
+    .item-text {
+      @include honeycomb-content(380px, 250px);
+    }
   }
 }
 
 .item-image {
-   position: relative;
-   z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
-  .item-right {
-    order: 3;
-    justify-content: flex-end;
-    .item-text {
-      p {
-        position: relative;
-        left: -24px;
-        padding-left: 50px;
-        padding-right: 0;
+.item-right {
+  order: 3;
+  justify-content: flex-end;
+
+  .item-text {
+    p {
+      position: relative;
+      left: -24px;
+      padding-left: 50px;
+      padding-right: 0;
+    }
+  }
+
+  .item-image {
+    @include respond-to-custom($tablet-size, 1440px) {
+      img {
+        width: 140px;
+        margin-top: -10px;
       }
     }
+  }
+
+  .item-text {
+    span {
+      text-align: left;
+    }
+  }
+
+  &:first-child {
     .item-text {
-      span {
-        text-align: left;
-      }
-    }
-  }
-  .honeycombs {
-    display: flex;
-    @include respond-to-custom(1500px, 6000px) {flex-direction: row;}
-    @include respond-to-custom(0px, 1499px) {flex-direction: column;}
-    justify-content: space-between;
-  }
-
-  .center-honeycomb {
-    position: relative;
-    max-width: 475px;
-    //@include respond-to-custom(1000, 1300) {
-    //  max-width: 375px;
-    //}
-    //width: 90%;
-    margin: 0 -55px;
-  }
-
-  .center-honeycomb {
-    img {
-      width: 475px;
-      height: 413px;
+      @include honeycomb-content(380px, 250px);
     }
   }
 
-  .honeycomb-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 85%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    text-align: center;
-    text-shadow: 2.9px 4px 7px rgba(19, 13, 53, 0.14);
+  &:nth-child(2) {
+    .item-text {
+      @include honeycomb-content(300px, 225px);
+    }
+  }
+
+  &:last-child {
+    .item-text {
+      @include honeycomb-content(380px, 250px);
+    }
+  }
+}
+
+.honeycombs {
+  display: flex;
+  @include respond-to(tablet) {
+    flex-direction: column
+  }
+  @include respond-to(mobile) {
+    flex-direction: column
+  }
+  justify-content: space-around;
+  padding-left: 15px;
+  padding-top: 10px;
+  overflow-x: hidden;
+}
+
+
+.honeycomb-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  text-shadow: 2.9px 4px 7px rgba(19, 13, 53, 0.14);
+  font-size: 30px;
+  font-weight: bold;
+  color: #2c2e30;
+  text-transform: uppercase;
+  @include respond-to-custom(1441px, -1) {
     font-size: 39px;
-    font-weight: bold;
-    color: #2c2e30;
-    text-transform: uppercase;
   }
+  @include respond-to(mobile) { top: 25px }
+}
 
 .item-text {
   p {
@@ -140,9 +224,8 @@
     align-items: center;
     display: flex;
   }
+
   span {
     display: inline-flex;
   }
 }
-
-

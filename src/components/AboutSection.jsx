@@ -23,9 +23,9 @@ class AboutSection extends Component {
           <div className="honeycombs">
             <div className="left-section">
               <div className="about-item item-left">
-                <div className="item-text" style={{width: 380}}>
+                <div className="item-text">
                   <p>
-                            <span style={{width: 194}}>
+                            <span>
                                 All data stores local on you Pc or Mac
                             </span>
                   </p>
@@ -35,9 +35,9 @@ class AboutSection extends Component {
                 </div>
               </div>
               <div className="about-item item-left">
-                <div className="item-text" style={{width: 300}}>
+                <div className="item-text">
                   <p>
-                            <span style={{width: 208}}>
+                            <span>
                                 Exclusive analytics of personal income
                             </span>
                   </p>
@@ -47,9 +47,9 @@ class AboutSection extends Component {
                 </div>
               </div>
               <div className="about-item item-left">
-                <div className="item-text" style={{width: 380}}>
+                <div className="item-text" >
                   <p>
-                            <span style={{width: 151}}>
+                            <span>
                                 10 exchanges history support
                             </span>
                   </p>
@@ -71,40 +71,39 @@ class AboutSection extends Component {
             </div>
             <div className="right-section">
               <div className="about-item item-right">
-
                 <div className="item-image">
                   <img src={SignApp} alt=""/>
                 </div>
-                <div className="item-text" style={{width: 380}}>
+                <div className="item-text ">
                   <p>
-                            <span style={{width: 225}}>
+                            <span>
                                 One App for manager portfolio and trading
                             </span>
                   </p>
                 </div>
               </div>
               <div className="about-item item-right">
-
+              {/**/}
                 <div className="item-image">
                   <img src={SignApp2} alt=""/>
                 </div>
-                <div className="item-text" style={{width: 300}}>
+                <div className="item-text ">
                   <p>
-                            <span style={{width: 225}}>
+                            <span >
                                 One App for manager portfolio and trading
-
+              {/**/}
                             </span>
                   </p>
                 </div>
               </div>
               <div className="about-item item-right">
-
+              {/**/}
                 <div className="item-image">
                   <img src={OneSec} alt=""/>
                 </div>
-                <div className="item-text" style={{width: 380}}>
+                <div className="item-text ">
                   <p>
-                            <span style={{width: 225}}>
+                            <span>
                                 1 sec sync time. Over 100 gb of data
                             </span>
                   </p>

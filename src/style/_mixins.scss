@@ -3,16 +3,31 @@ $tablet-size: 992px;
 
 @mixin respond-to($media) {
   @if $media == mobile {
-    @media only screen and (max-width: $mobile-size) {@content;}
+    @media only screen and (max-width: $mobile-size) {
+      @content;
+    }
   } @else if $media == tablet {
-    @media only screen and (min-width: $mobile-size + 1) and (max-width: $tablet-size) {@content;}
-  } @if $media == desktop {
-    @media only screen and (min-width: $tablet-size + 1) {@content;}
+    @media only screen and (min-width: $mobile-size + 1) and (max-width: $tablet-size) {
+      @content;
+    }
+  }
+  @if $media == desktop {
+    @media only screen and (min-width: $tablet-size + 1) {
+      @content;
+    }
   }
 }
 
 @mixin respond-to-custom($low, $high) {
-  @media only screen and (min-width: $low) and (max-width: $high) {@content;}
+  @if $high == -1 {
+    @media only screen and (min-width: $low) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $low) and (max-width: $high) {
+      @content;
+    }
+  }
 }
 
 @mixin wrapper($height) {
@@ -22,14 +37,44 @@ $tablet-size: 992px;
 }
 
 @mixin svg-btn-animation($dash-array-start, $dash-array-end, $dashoffset) {
-    0% {
-      stroke-dasharray: $dash-array-start, $dash-array-end;
-      stroke-dashoffset: $dashoffset;
-      stroke-width: 8px;
+  0% {
+    stroke-dasharray: $dash-array-start, $dash-array-end;
+    stroke-dashoffset: $dashoffset;
+    stroke-width: 8px;
+  }
+  100% {
+    stroke-dasharray: 760;
+    stroke-dashoffset: 0;
+    stroke-width: 2px;
+  }
+}
+
+@mixin honeycomb-content($container-width, $text-width) {
+  width: $container-width;
+  p {
+    span {
+      width: $text-width;
     }
-    100% {
-      stroke-dasharray: 760;
-      stroke-dashoffset: 0;
-      stroke-width: 2px;
+  }
+  @include respond-to-custom($tablet-size, 1440px) {
+    width: $container-width - 100px;
+    p {
+      span {
+        font-size: 16px;
+        width: $text-width - 50px;
+      }
     }
+  }
+
+
+  @include respond-to-custom(0px, $tablet-size - 1px) {
+
+    width: 100%;
+    p {
+      span {
+        width: 100%;
+        font-size: 16px;
+      }
+    }
+  }
 }

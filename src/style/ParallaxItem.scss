@@ -1,0 +1,20 @@
+@import "mixins";
+@import "variables";
+
+.parallax-wrap {
+  width: 100%;
+  min-height: 800px;
+  background-size: cover;
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  z-index: -1;
+}
+
+.parallax-item {
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  min-height: 900px;
+}
