@@ -103,11 +103,6 @@ class TryItNowSection extends Component {
     const parallaxXOff = this._getParallaxXOffset();
     return (
       <div className="try-it-now-section align-center">
-        {/*<div className="try-it-now-background-wrap">*/}
-        {/*  /!*<Parallax disabled={false} y={[parallaxXOff, "200px"]} tagInner="div" tagOuter="div">*!/*/}
-        {/*  <img className="try-it-now-background" src={Background} alt=""/>*/}
-        {/*  /!*</Parallax>*!/*/}
-        {/*</div>*/}
         <ParallaxItem
           outerClass="parallax-background-wrap"
           innerClass="parallax-item"
@@ -155,13 +150,7 @@ class TryItNowSection extends Component {
                 zIndex={100}
                 onItemClick={this.setCurrentExchange}
                 content={Object.keys(this.props.exchanges)}
-                loadingContent={
-                  <MoonLoader
-                    size={35}
-                  css={override}
-                  color={'#cca210'}
-                  loading={true}
-                />
+                loadingContent={<MoonLoader size={35} css={override} color={'#cca210'} loading={true}/>
                 }
                 icon={Icon1} width="220" style="exchange-btn">
                 Exchange name

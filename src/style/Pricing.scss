@@ -79,7 +79,7 @@
   }
   .big-item {
     width: 360px;
-    @include respond-to-custom(0px, 1149px) {margin: 0;}
+    @include respond-to-custom(0px, 1149px) {transform: scale(0.8); margin: 0;}
     @include respond-to-custom(1150px, 9999px) {margin: 0 115px;}
     .name {
       padding-left: 70px;

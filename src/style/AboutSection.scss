@@ -98,12 +98,6 @@
 
   .item-image {
     left: -24px;
-    @include respond-to-custom($tablet-size, 1440px) {
-      img {
-        width: 140px;
-        margin-top: -10px;
-      }
-    }
   }
 
   &:first-child {
@@ -128,6 +122,12 @@
 .item-image {
   position: relative;
   z-index: 2;
+  @include respond-to-custom(0, 1440px) {
+    img {
+      width: 130px;
+      margin-top: -10px;
+    }
+  }
 }
 
 .item-right {
@@ -140,15 +140,6 @@
       left: -24px;
       padding-left: 50px;
       padding-right: 0;
-    }
-  }
-
-  .item-image {
-    @include respond-to-custom($tablet-size, 1440px) {
-      img {
-        width: 140px;
-        margin-top: -10px;
-      }
     }
   }
 
