@@ -13,15 +13,15 @@
 .try-it-now-background-wrap {
   overflow: hidden;
   position: absolute;
-  z-index: -1;
+  z-index: 150;
   width: 100%;
-  min-height: 850px;
+  min-height: 900px;
 }
 
 .try-it-now-background {
   width: 100%;
   min-width: 1920px;
-  min-height: 850px;
+  min-height: 900px;
 }
 
 .try-it-now-inner-section {
@@ -156,6 +156,7 @@
   @include respond-to(mobile) {
     flex-direction: column;
   }
+  //overflow-x: hidden;
 }
 
 .get-course-line {

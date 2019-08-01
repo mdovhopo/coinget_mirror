@@ -81,9 +81,9 @@ class App extends Component {
         <ConnectWebSocket />
         <SubscribeOnCoins />
         <NavBar/>
-        <ParallaxProvider>
+        {/*<ParallaxProvider>*/}
           <TryItNowSection/>
-        </ParallaxProvider>
+        {/*</ParallaxProvider>*/}
         <CourseSection/>
         <Header>About Coinget</Header>
         <AboutSection/>
