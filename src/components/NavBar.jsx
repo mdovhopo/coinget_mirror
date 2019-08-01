@@ -26,6 +26,7 @@ class NavBar extends Component {
     getProfile(token)
       .then(res => {
         if (res.status === 200) {
+          res.validateStatus();
           console.log("Auth token valid! Set login button to profile");
           this.setState({authorized: true, locationURL: res.config.url});
         }

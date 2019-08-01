@@ -55,16 +55,17 @@ class DropDownSVG extends Component {
       );
     } else {
       const active = this.state.active ? "svg-dropdown-active" : "";
-      if (this.props.content === undefined) {
+      const {content, loadingContent} = this.props;
+      if (content === undefined || content.length === 0) {
         return (
         <ul className={"svg-dropdown " + active}>
-          <li>{this.props.loadingContent}</li>
+          <li>{loadingContent}</li>
         </ul>
         );
       }
       return (
       <ul className={"svg-dropdown " + active} >
-        {this.props.content.map((item, index) => (
+        {content.map((item, index) => (
           <li key={index} onClick={() => this.handleSelectOption(item)}>{item}</li>
         ))}
       </ul>

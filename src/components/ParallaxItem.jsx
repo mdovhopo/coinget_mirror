@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
 import "Style/ParallaxItem.scss";
 
-const props = {
-  image: undefined,
-  speed: undefined,
-  startOffset: undefined,
-  endOffset: undefined,
-};
-
 class ParallaxItem extends Component {
   componentDidMount() {
-    this.element.style.transform = `translate3d(0, -${this.props.startOffset}px, 0)`;
-    this.ticking = false;
+    // this.relativePos = this.props.startOffset;
+    // this.lastYoff = window.scrollY;
+    this.update();
     window.addEventListener("scroll", this.requestTick);
   }
   componentWillUnmount() {
@@ -20,8 +14,9 @@ class ParallaxItem extends Component {
   update = () => {
     const yOff = window.scrollY;
     const {speed, startOffset} = this.props;
-    console.log(this.element.style.transform);
-    this.element.style.transform = `translate3d(0, ${yOff * speed - startOffset}px, 0)`;
+    // this.relativePos += this.lastYoff > yOff ? -1 : 1;
+    // this.lastYoff = yOff;
+    this.element.style.transform = `translate3d(0, ${yOff * speed + startOffset}px, 0)`;
     this.ticking = false;
   };
   requestTick = () => {
@@ -31,12 +26,12 @@ class ParallaxItem extends Component {
     }
   };
   render() {
-    const {image} = this.props;
+    const {image, outerClass, innerClass} = this.props;
     return (
-      <div className="parallax-wrap">
+      <div className={outerClass}>
         <img
           ref={(ref) => {this.element = ref}}
-          className="parallax-item"
+          className={innerClass}
           src={image}
           alt="parallax item"/>
       </div>

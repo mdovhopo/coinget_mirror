@@ -10,9 +10,8 @@ import SupportedExchanges from "Components/SupportedExchanges";
 import Footer from "Components/Footer";
 import SubscribeForm from "Components/SubscribeForm";
 import {connect} from "react-redux";
-import {ParallaxProvider} from "react-scroll-parallax";
 import ConnectWebSocket from "Components/ConnectWebSocket";
-import SubscribeOnCoins from "Utils/SubscribeOnCoins";
+import SubscribeOnCoins from "Components/SubscribeOnCoins";
 import Slider from "Components/Slider";
 
 

@@ -1,7 +1,7 @@
 @import "mixins";
 @import "variables";
 
-.parallax-wrap {
+.parallax-background-wrap {
   width: 100%;
   min-height: 800px;
   background-size: cover;
@@ -9,12 +9,47 @@
   display: flex;
   position: absolute;
   z-index: -1;
+  .parallax-item {
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    min-height: 900px;
+  }
 }
 
-.parallax-item {
-  overflow: hidden;
+.parallax-shape-right {
   position: absolute;
-  z-index: -1;
-  width: 100%;
-  min-height: 900px;
+  left: calc(50% + 720px);
+  @include respond-to-custom(1px, 1440px) {
+    display: none;
+  };
 }
+
+.parallax-shape-left {
+  position: absolute;
+  @include respond-to-custom(1px, 1440px) {
+    display: none;
+  };
+  right: calc(50% + 720px);
+}
+
+.sphere-1 {
+  right: calc(50% + 740px);
+}
+.sphere-2 {
+  right: calc(50% + 700px);
+}
+
+.sphere-3 {
+  right: calc(50% + 800px);
+
+}
+
+.cube-1 {
+  left: calc(50% + 740px);
+}
+.cube-2 {
+  left: calc(50% + 700px);
+}
+

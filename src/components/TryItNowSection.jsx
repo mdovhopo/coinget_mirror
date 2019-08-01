@@ -16,28 +16,27 @@ import Sphere3 from "Assets/sphere-1.png";
 import Background from "Assets/background.png";
 import {connect} from "react-redux";
 import GetCoursePopUp from "Components/GetCoursePopUp";
-import {Parallax} from "react-scroll-parallax";
 import {getCourse} from "Utils/api";
 import EventEmitter from "Utils/EventEmitter";
 import ParallaxItem from "Components/ParallaxItem";
+import {MoonLoader} from "react-spinners";
+import {css} from "@emotion/core";
 
 const parallaxShapesParams = [
-  {className: "parallax-shape-left sphere-1", y:[-1000, 1000], src: Sphere1},
-  {className: "parallax-shape-left sphere-2", y:[0, 600], src: Sphere2},
-  {className: "parallax-shape-left sphere-3", y:[-200, 1100], src: Sphere3},
-  {className: "parallax-shape-right cube-1", y:[-650, 750], src: SmallCube},
-  {className: "parallax-shape-right cube-2", y:[-200, 500], src: LargeCube}
+  {className: "parallax-shape-left sphere-1", startOffset: 250, speed: 0.6, src: Sphere1},
+  {className: "parallax-shape-left sphere-2", startOffset: 300, speed: 0.4, src: Sphere2},
+  {className: "parallax-shape-left sphere-3", startOffset: 350, speed: 0.5, src: Sphere3},
+  {className: "parallax-shape-right cube-1", startOffset: 300, speed: 0.45, src: SmallCube},
+  {className: "parallax-shape-right cube-2", startOffset: 350, speed: 0.35, src: LargeCube}
 ];
 
-const ParallaxOverlay = () => (
-  <div className="parallax-overlay">
-    {parallaxShapesParams.map((shape, index) => (
-        <Parallax key={index} className={shape.className} disabled={false} y={shape.y} tagInner="div" tagOuter="div">
-          <img src={shape.src} alt="sphere"/>
-        </Parallax>
-    ))}
-  </div>
-);
+const override = css`
+    display: flex;
+    margin: 0 auto;
+    border-color: red;
+    flex-direction: column;
+    justify-content: center;
+`;
 
 class TryItNowSection extends Component {
 
@@ -110,10 +109,26 @@ class TryItNowSection extends Component {
         {/*  /!*</Parallax>*!/*/}
         {/*</div>*/}
         <ParallaxItem
+          outerClass="parallax-background-wrap"
+          innerClass="parallax-item"
           image={Background}
-          startOffset={80}
-          speed={0.5}
+          startOffset={-80}
+          speed={0.3}
         />
+        {parallaxShapesParams.map(
+          (shape, index) => {
+            return (
+              <ParallaxItem
+                key={index}
+                outerClass={shape.className}
+                innnerClass=""
+                image={shape.src}
+                startOffset={shape.startOffset}
+                speed={shape.speed}
+              />
+            );
+          }
+        )}
         <div className="try-it-now-inner-section">
           <div className="heading">
             {/*<ParallaxOverlay />*/}
@@ -140,7 +155,14 @@ class TryItNowSection extends Component {
                 zIndex={100}
                 onItemClick={this.setCurrentExchange}
                 content={Object.keys(this.props.exchanges)}
-                loadingContent={"Loading..."}
+                loadingContent={
+                  <MoonLoader
+                    size={35}
+                  css={override}
+                  color={'#cca210'}
+                  loading={true}
+                />
+                }
                 icon={Icon1} width="220" style="exchange-btn">
                 Exchange name
               </DropDownSVG>
