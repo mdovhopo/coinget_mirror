@@ -25,7 +25,6 @@
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.4",
     "react-redux": "^7.1.0",
-    "react-scroll-parallax": "^2.1.2",
     "react-spinners": "^0.5.13",
     "redux": "^4.0.4"
   },
