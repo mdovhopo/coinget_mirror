@@ -208,17 +208,4 @@
   }
 }
 
-.parallax-overlay {
-  position: absolute;
-  width: 100%;
-  min-height: 800px;
-  overflow: hidden;
-  top: 80px;
-  left: 0;
-  padding-top: 100px;
-  @include respond-to(mobile) {
-    display: none;
-  }
-}
-
 

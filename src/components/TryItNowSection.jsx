@@ -47,9 +47,7 @@ class TryItNowSection extends Component {
       currentExchange: "",
       currentCurrency: "",
       currentDate: 0,
-      currentCourse: -1,
-      width: 0,
-      height: 0
+      currentCourse: -1
     }
   }
 
@@ -78,29 +76,8 @@ class TryItNowSection extends Component {
     this.setState({showGetCourse: false, currentCourse: -1});
   };
 
-  updateDimensions = () => {
-    this.setState({width: innerWidth, height: innerHeight});
-  };
-
-  componentWillMount() {
-    this.updateDimensions();
-  };
-  componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions);
-  };
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  };
-
-  _getParallaxXOffset = () => {
-    if (this.state.width < 2000) return "-275px";
-    if (this.state.width < 2500) return "-280px";
-    else if (this.state.width < 3000) return "-330px";
-    return "-360px";
-  };
 
   render() {
-    const parallaxXOff = this._getParallaxXOffset();
     return (
       <div className="try-it-now-section align-center">
         <ParallaxItem
