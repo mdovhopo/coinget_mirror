@@ -12,7 +12,7 @@ class SubscribeOnCoins extends Component {
   componentDidMount() {
     axios.get(this.api + "/exchanges", {
       headers: {
-        "Access-Control-Allow-Origin": "backend.coinget.io"
+        "Access-Control-Allow-Origin": "backend-land.coinget.io"
       }
       // proxy: {
       //   host: 'backend-land.coinget.io',
