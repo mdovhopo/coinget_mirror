@@ -10,9 +10,9 @@ class SubscribeOnCoins extends Component {
   proxy ="https://cors-anywhere.herokuapp.com/";
   // TODO do something with this access through proxy
   componentDidMount() {
-    axios.get(this.api + "/exchanges", {
+    axios.get(this.proxy + this.api + "/exchanges", {
       headers: {
-        "Access-Control-Allow-Origin": "backend-land.coinget.io"
+        "Access-Control-Allow-Origin": "backend-land.coinget.io, backend.coinget.io",
       }
       // proxy: {
       //   host: 'backend-land.coinget.io',
