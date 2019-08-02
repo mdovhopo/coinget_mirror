@@ -58,7 +58,7 @@
         left: 20px;
         right: 20px;
       };
-      font-size: 40px;
+      font-size: 30px;
     }
   ;
     font-weight: bold;
@@ -73,17 +73,14 @@
     @include respond-to(desktop) {
       font-size: 28px;
     }
-  ;
     @include respond-to(tablet) {
       padding: 0 10px;
       font-size: 20px;
     }
-  ;
     @include respond-to(mobile) {
       padding: 0 10px;
-      font-size: 20px;
+      font-size: 18px;
     }
-  ;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -107,6 +104,7 @@
   height: 25px;
   margin: 0.75rem;
   z-index: 101;
+
   &:hover {
     opacity: 0.5;
   }
@@ -207,19 +205,6 @@
     .get-course-icon-wrap {
       opacity: 0;
     }
-  }
-}
-
-.parallax-overlay {
-  position: absolute;
-  width: 100%;
-  min-height: 800px;
-  overflow: hidden;
-  top: 80px;
-  left: 0;
-  padding-top: 100px;
-  @include respond-to(mobile) {
-    display: none;
   }
 }
 

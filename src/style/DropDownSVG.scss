@@ -29,6 +29,14 @@
   top: 50%;
   transform: translateY(-50%);
 
+  .active {
+    .exchange-btn, .coin-name-btn {
+      stroke-dasharray: 760;
+      stroke-dashoffset: 0;
+      stroke-width: 2px;
+    }
+  }
+
   &:hover {
     cursor: pointer;
 
@@ -43,11 +51,13 @@
       -o-animation: 0.3s draw-coin-name linear forwards;
       animation: 0.3s draw-coin-name linear forwards;
     }
+
     .text {
-      //-webkit-animation: 0.5s move-text-to-corner linear forwards;
-      //-o-animation: 1s move-text-to-corner linear forwards;
+      -webkit-animation: 0.1s move-text-to-corner linear forwards;
+      -o-animation: 0.1s move-text-to-corner linear forwards;
       animation: 0.1s move-text-to-corner linear forwards;
     }
+
     .svg-btn-arrow {
       opacity: 0;
     }
@@ -81,18 +91,18 @@
 
 @keyframes move-text-to-corner {
   0% {
-    //-webkit-transform: translate(0px, 0px);
-    //-moz-transform: translate(0px, 0px);
-    //-ms-transform: translate(0px, 0px);
-    //-o-transform: translate(0px, 0px);
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
     font-size: 22px;
   }
   100% {
-    //-webkit-transform: translate(-10px, -10px);
-    //-moz-transform: translate(-10px, -10px);
-    //-ms-transform: translate(-10px, -10px);
-    //-o-transform: translate(-10px, -10px);
+    -webkit-transform: translate(-10px, -10px);
+    -moz-transform: translate(-10px, -10px);
+    -ms-transform: translate(-10px, -10px);
+    -o-transform: translate(-10px, -10px);
     transform: translate(-10px, -10px);
     font-size: 15px;
   }
@@ -142,12 +152,8 @@
   background-color: red;
 }
 
-.custom-calendar {
-background-color: red;
-}
-
 .date-piker-wrapper {
-  display: none;  //position: absolute;
-    //width: 170px;
-    //top: 20px;
+  display: none; //position: absolute;
+  //width: 170px;
+  //top: 20px;
 }

@@ -25,13 +25,16 @@ class NavBar extends Component {
     const token = localStorage.getItem("token");
     getProfile(token)
       .then(res => {
-        if (res.status === 200) {
-          res.validateStatus();
-          console.log("Auth token valid! Set login button to profile");
+          if (res.status === 200) {
+          // console.log(res);
+          // TODO if token valid use it for login.
+            localStorage.removeItem("token");
+            console.log("Auth token valid! Set login button to profile");
           this.setState({authorized: true, locationURL: res.config.url});
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        // console.log(err);
         console.log("Auth token is not valid! removing...");
         localStorage.removeItem("token")
       });
