@@ -81,6 +81,7 @@ class TryItNowSection extends Component {
     return (
       <div className="try-it-now-section align-center">
         <ParallaxItem
+          background
           outerClass="parallax-background-wrap"
           innerClass="parallax-item"
           image={Background}

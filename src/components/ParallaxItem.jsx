@@ -6,11 +6,13 @@ class ParallaxItem extends Component {
     // this.relativePos = this.props.startOffset;
     // this.lastYoff = window.scrollY;
     this.update();
-    window.addEventListener("scroll", this.requestTick);
+    document.addEventListener("scroll", this.requestTick);
   }
+
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.requestTick);
+    document.removeEventListener("scroll", this.requestTick);
   }
+
   update = () => {
     const yOff = window.scrollY;
     const {speed, startOffset} = this.props;
@@ -25,15 +27,24 @@ class ParallaxItem extends Component {
       window.requestAnimationFrame(this.update);
     }
   };
+
   render() {
-    const {image, outerClass, innerClass} = this.props;
+    const {image, outerClass, innerClass, background} = this.props;
     return (
       <div className={outerClass}>
-        <img
+        { background
+          ? <div
           ref={(ref) => {this.element = ref}}
           className={innerClass}
-          src={image}
-          alt="parallax item"/>
+          style={{backgroundImage: `url(${image})`}}>
+          </div>
+          : <img
+            ref={(ref) => {this.element = ref}}
+            className={innerClass}
+            src={image}
+            alt=""/>
+        }
+
       </div>
     );
   }
