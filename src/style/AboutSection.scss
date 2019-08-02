@@ -41,9 +41,6 @@
 }
 
 .center-section {
-  @include respond-to(mobile) {
-    order: 1
-  }
   @include respond-to-custom(1441px, -1) {
     padding-top: 40px;
     .center-honeycomb {
@@ -53,6 +50,9 @@
     }
   }
   @include respond-to(mobile) {
+    order: 1;
+    padding-bottom: 20px;
+    padding-top: 0;
     .center-honeycomb {
       img {
         width: 325px !important;
