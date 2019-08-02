@@ -5,9 +5,9 @@ const loginAPI = "https://coinget.io/api";
 const proxy ="https://cors-anywhere.herokuapp.com/";
 
 export const getCourse = (currentExchange, currentCurrency, currentDate) => {
-  return axios.get(backendAPI, {
+  return axios.get(proxy + backendAPI, {
     headers: {
-      "Access-Control-Allow-Origin": "backend-land.coinget.io"
+      "Access-Control-Allow-Origin": "backend-land.coinget.io, backend.coinget.io",
     },
     params:  {
           marketCurrency: "USD",
