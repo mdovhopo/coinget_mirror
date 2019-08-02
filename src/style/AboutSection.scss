@@ -1,6 +1,50 @@
 @import "variables";
 @import "mixins";
 
+@mixin responsive-text-length() {
+  @include respond-to-custom($tablet-size + 1, -1) {
+    $text-length: 200px;
+    &:first-child {
+      .item-text {
+        @include honeycomb-content(380px, $text-length);
+      }
+    }
+
+    &:nth-child(2) {
+      .item-text {
+        @include honeycomb-content(300px, $text-length);
+      }
+    }
+
+    &:last-child {
+      .item-text {
+        @include honeycomb-content(380px, $text-length);
+      }
+    }
+  }
+
+  @include respond-to-custom(0, $tablet-size) {
+    $text-length: 150px;
+    &:first-child {
+      .item-text {
+        @include honeycomb-content(380px, $text-length);
+      }
+    }
+
+    &:nth-child(2) {
+      .item-text {
+        @include honeycomb-content(300px, $text-length);
+      }
+    }
+
+    &:last-child {
+      .item-text {
+        @include honeycomb-content(380px, $text-length);
+      }
+    }
+  }
+}
+
 .about-container {
   background-color: #fff;
   width: 100%;
@@ -99,24 +143,7 @@
   .item-image {
     left: -24px;
   }
-
-  &:first-child {
-    .item-text {
-      @include honeycomb-content(380px, 250px);
-    }
-  }
-
-  &:nth-child(2) {
-    .item-text {
-      @include honeycomb-content(300px, 208px);
-    }
-  }
-
-  &:last-child {
-    .item-text {
-      @include honeycomb-content(380px, 250px);
-    }
-  }
+  @include responsive-text-length();
 }
 
 .item-image {
@@ -149,23 +176,7 @@
     }
   }
 
-  &:first-child {
-    .item-text {
-      @include honeycomb-content(380px, 250px);
-    }
-  }
-
-  &:nth-child(2) {
-    .item-text {
-      @include honeycomb-content(300px, 225px);
-    }
-  }
-
-  &:last-child {
-    .item-text {
-      @include honeycomb-content(380px, 250px);
-    }
-  }
+  @include responsive-text-length();
 }
 
 .honeycombs {
@@ -201,7 +212,9 @@
   @include respond-to-custom(1441px, -1) {
     font-size: 39px;
   }
-  @include respond-to(mobile) { top: 25px }
+  @include respond-to(mobile) {
+    top: 25px
+  }
 }
 
 .item-text {

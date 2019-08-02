@@ -7,13 +7,17 @@ import {addExchangeWrap} from "Redux/actions/actionWrappers";
 class SubscribeOnCoins extends Component {
 
   api = "https://backend-land.coinget.io:20443/v3/public/api/info";
-  proxy ="https://cors-anywhere.herokuapp.com/";
+  proxy = "https://cors-anywhere.herokuapp.com/";
   // TODO do something with this access through proxy
   componentDidMount() {
     axios.get(this.proxy + this.api + "/exchanges", {
-      headers: {
-        "Access-Control-Allow-Origin": "backend-land.coinget.io, backend.coinget.io",
-      }
+      // headers: {
+      //   'access-control-allow-origin': 'https://backend-land.coinget.io:20443',
+      //   'access-control-allow-methods': 'GET',
+      //   'access-control-allow-headers': 'access-control-allow-origin',
+      //   'access-control-expose-headers':
+      //     'access-control-allow-origin,access-control-allow-methods,access-control-allow-headers'
+      // }
       // proxy: {
       //   host: 'backend-land.coinget.io',
       //   port: 20443

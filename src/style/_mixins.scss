@@ -68,11 +68,9 @@ $tablet-size: 992px;
 
 
   @include respond-to-custom(0px, $tablet-size - 1px) {
-
     width: 100%;
     p {
       span {
-        width: 100%;
         font-size: 16px;
       }
     }

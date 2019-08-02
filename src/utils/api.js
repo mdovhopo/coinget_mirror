@@ -2,23 +2,28 @@ import axios from "axios";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api/price/rate";
 const loginAPI = "https://coinget.io/api";
-const proxy ="https://cors-anywhere.herokuapp.com/";
+const proxy = "https://cors-anywhere.herokuapp.com/";
 
 export const getCourse = (currentExchange, currentCurrency, currentDate) => {
   return axios.get(proxy + backendAPI, {
-    headers: {
-      "Access-Control-Allow-Origin": "backend-land.coinget.io, backend.coinget.io",
-    },
-    params:  {
-          marketCurrency: "USD",
-          exchangeId: currentExchange,
-          tradeCurrency: currentCurrency,
-          date: currentDate
+    // headers: {
+    //   'access-control-allow-origin': 'backend.coinget.io',
+    //   'access-control-allow-methods': 'GET',
+    //   'access-control-allow-headers': 'access-control-allow-origin',
+    //   'access-control-expose-headers':
+    //     'access-control-allow-origin,access-control-allow-methods,access-control-allow-headers'
+    // },
+    params: {
+      marketCurrency: "USD",
+      exchangeId: currentExchange,
+      tradeCurrency: currentCurrency,
+      date: currentDate
     }
   });
 };
 
 export const getProfile = (token) => {
+  console.log("About to get profile", token);
   return axios.get(loginAPI + "/profile", {
     headers: {
       'Authorization': 'Bearer ' + token
@@ -26,7 +31,7 @@ export const getProfile = (token) => {
   })
 };
 
-export const authRequest = (data, apiPath, ) => {
+export const authRequest = (data, apiPath,) => {
   return axios.post(loginAPI + apiPath, data)
 };
 
