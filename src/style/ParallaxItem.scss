@@ -3,14 +3,11 @@
 
 .parallax-background-wrap {
   width: 100%;
-  min-width: 1920px;
-  min-height: 800px;
-  background-size: cover;
   justify-content: center;
   display: flex;
   position: absolute;
-  z-index: -1;
   .parallax-item {
+    background-size: cover;
     overflow: hidden;
     position: absolute;
     z-index: -1;

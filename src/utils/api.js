@@ -2,9 +2,13 @@ import axios from "axios";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api/price/rate";
 const loginAPI = "https://coinget.io/api";
+const proxy ="https://cors-anywhere.herokuapp.com/";
 
 export const getCourse = (currentExchange, currentCurrency, currentDate) => {
   return axios.get(backendAPI, {
+    headers: {
+      "Access-Control-Allow-Origin": "backend.coinget.io"
+    },
     params:  {
           marketCurrency: "USD",
           exchangeId: currentExchange,
