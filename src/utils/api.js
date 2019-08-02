@@ -7,7 +7,7 @@ const proxy ="https://cors-anywhere.herokuapp.com/";
 export const getCourse = (currentExchange, currentCurrency, currentDate) => {
   return axios.get(backendAPI, {
     headers: {
-      "Access-Control-Allow-Origin": "backend.coinget.io"
+      "Access-Control-Allow-Origin": "backend-land.coinget.io"
     },
     params:  {
           marketCurrency: "USD",
