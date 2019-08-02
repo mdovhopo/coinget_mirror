@@ -152,7 +152,7 @@ class TryItNowSection extends Component {
               </DropDownSVG>
               <div className="get-course-item">
                 <div className="get-coin-btn-container">
-                  <BasicButton className="rounded-btn z-on-top" maxWidth={170} minWidth={170} onClick={this.openGetCourse}>
+                  <BasicButton className="rounded-btn" maxWidth={170} minWidth={170} onClick={this.openGetCourse}>
                     Get Course
                   </BasicButton>
                   <GetCoursePopUp

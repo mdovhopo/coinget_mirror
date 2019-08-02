@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import LogoCopyDesktop from "../assets/logo-copy.png";
 import LogoCopyMobile from "../assets/logo.png";
-import {Button }from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import BasicButton from "Components/BasicButton";
 import "Style/NavBar";
 import LoginFormPopUp from "Components/LoginFormPopUp";
@@ -25,11 +25,11 @@ class NavBar extends Component {
     const token = localStorage.getItem("token");
     getProfile(token)
       .then(res => {
-          if (res.status === 200) {
-          // console.log(res);
+        if (res.status === 200) {
           // TODO if token valid use it for login.
-            localStorage.removeItem("token");
-            console.log("Auth token valid! Set login button to profile");
+          // Also need to find the way to check if token valid.
+          localStorage.removeItem("token");
+          console.log("Auth token valid! Set login button to profile");
           this.setState({authorized: true, locationURL: res.config.url});
         }
       })
@@ -72,67 +72,67 @@ class NavBar extends Component {
   );
 
   _renderMenuItems = (size) => (
-      <ul className={"navbar-nav menu"} id="example-collapse-text">
-        <p className="hide-desktop gold-text">Menu</p>
-        {size === "mobile" ? this._renderLoginButton() : undefined}
-        <li className="menu-item p-2">
-          <a className="menu-link" href='#about'>
-            About Coinget
-          </a>
-        </li>
-        <li className="menu-item p-2">
-          <a className="menu-link" href='#price'>
-            Pricing
-          </a>
-        </li>
-        <li className="menu-item p-2">
-          <a className="menu-link" href='#subscribe'>
-            Subscribe
-          </a>
-        </li>
-        <li className="menu-item p-2">
-          <a className="menu-link" href='#contact'>
-            Contact Us
-          </a>
-        </li>
-        {size === "desktop" ? this._renderLoginButton() : undefined }
-      </ul>
+    <ul className={"navbar-nav menu"} id="example-collapse-text">
+      <p className="hide-desktop gold-text">Menu</p>
+      {size === "mobile" ? this._renderLoginButton() : undefined}
+      <li className="menu-item p-2">
+        <a className="menu-link" href='#about'>
+          About Coinget
+        </a>
+      </li>
+      <li className="menu-item p-2">
+        <a className="menu-link" href='#price'>
+          Pricing
+        </a>
+      </li>
+      <li className="menu-item p-2">
+        <a className="menu-link" href='#subscribe'>
+          Subscribe
+        </a>
+      </li>
+      <li className="menu-item p-2">
+        <a className="menu-link" href='#contact'>
+          Contact Us
+        </a>
+      </li>
+      {size === "desktop" ? this._renderLoginButton() : undefined}
+    </ul>
   );
 
   render() {
-    const { openMobileMenu } = this.state;
+    const {openMobileMenu} = this.state;
     return (
-    <div className="navbar-dark black-bg align-center">
+      <div className="navbar-dark black-bg align-center">
         <div className="menu-container navbar justify-content-between m-0 p-0">
-        <div className="hide-mobile hide-tablet">
-          {this._renderLogo(LogoCopyDesktop)}
-        </div>
-        <div className="hide-mobile hide-tablet">
-          {this._renderMenuItems("desktop")}
-        </div>
-        <div className="hide-desktop">
-          {this._renderLogo(LogoCopyMobile)}
-        </div>
-        <div className="hide-desktop">
-        <Button
-          className="navbar-toggler"
-          onClick={() => this.setState({ openMobileMenu: !openMobileMenu })}
-          aria-controls="example-collapse-text"
-          aria-expanded={openMobileMenu}
-        >
+          <div className="hide-mobile hide-tablet">
+            {this._renderLogo(LogoCopyDesktop)}
+          </div>
+          <div className="hide-mobile hide-tablet">
+            {this._renderMenuItems("desktop")}
+          </div>
+          <div className="hide-desktop">
+            {this._renderLogo(LogoCopyMobile)}
+          </div>
+          <div className="hide-desktop">
+            <Button
+              className="navbar-toggler"
+              onClick={() => this.setState({openMobileMenu: !openMobileMenu})}
+              aria-controls="example-collapse-text"
+              aria-expanded={openMobileMenu}
+            >
             <span className="navbar-toggler-icon">
             </span>
-        </Button>
+            </Button>
+          </div>
         </div>
-        </div>
-        <div className={"hide-desktop " + (openMobileMenu === true ? "open-menu" : "close-menu")} >
+        <div className={"hide-desktop " + (openMobileMenu === true ? "open-menu" : "close-menu")}>
           {this._renderMenuItems("mobile")}
         </div>
-      <LoginFormPopUp
-        show={this.state.openLoginMenu}
-        onHide={this.handleLoginForm}
-      />
-    </div>
+        <LoginFormPopUp
+          show={this.state.openLoginMenu}
+          onHide={this.handleLoginForm}
+        />
+      </div>
     );
   }
 }

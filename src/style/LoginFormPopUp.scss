@@ -75,6 +75,9 @@
   position: relative;
   text-align: center;
   padding: 40px 0;
+  @include respond-to(mobile) {
+    padding: 8px 0;
+  }
   vertical-align: baseline;
 
 
@@ -85,6 +88,7 @@
     width: 100%;
     position: absolute;
     top: 51px;
+    @include respond-to(mobile) {top: 20px;}
     left: 0;
   }
 
@@ -111,6 +115,7 @@
     border-radius: 6px;
     padding: 16px 25px;
     margin-bottom: 31px;
+    @include respond-to(mobile) {margin-bottom: 10px}
 
     &:last-child {
       margin-bottom: 15px;
