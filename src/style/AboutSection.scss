@@ -1,9 +1,9 @@
 @import "variables";
 @import "mixins";
 
-@mixin responsive-text-length() {
+@mixin responsive-text-length($length-on-large) {
   @include respond-to-custom($tablet-size + 1, -1) {
-    $text-length: 200px;
+    $text-length: $length-on-large;
     &:first-child {
       .item-text {
         @include honeycomb-content(380px, $text-length);
@@ -143,7 +143,7 @@
   .item-image {
     left: -24px;
   }
-  @include responsive-text-length();
+  @include responsive-text-length(200px);
 }
 
 .item-image {
@@ -176,7 +176,7 @@
     }
   }
 
-  @include responsive-text-length();
+  @include responsive-text-length(220px);
 }
 
 .honeycombs {
