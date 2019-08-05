@@ -5,15 +5,53 @@ import HoneyComb10 from "Assets/honeycomb-10.png"
 import HoneyComb99 from "Assets/honeycomb-99.png"
 import HoneyCombFree from "Assets/honeycomb-free.png";
 import {connect} from "react-redux";
-import {switchLoginFormWrap} from "Redux/actions/actionWrappers";
 import EventEmitter from "Utils/EventEmitter";
+import Arrow from "Assets/arrow-2.png";
+
 
 class Pricing extends Component {
+  collapsed = true;
+  collapseElements = [];
+
+  collapseSection = (element) => {
+    const sectionHeight = element.scrollHeight;
+    const elementTransition = element.style.transition;
+    element.style.transition = '';
+    requestAnimationFrame(function() {
+      element.style.height = sectionHeight + 'px';
+      element.style.transition = elementTransition;
+      requestAnimationFrame(function() {
+        element.style.height = 0 + 'px';
+      });
+    });
+  };
+
+  expandSection = (element) => {
+    const sectionHeight = element.scrollHeight;
+    element.style.height = sectionHeight + 'px';
+    const transitionCallback = e =>  {
+      element.removeEventListener('transitionend', transitionCallback);
+      element.style.height = null;
+    };
+    element.addEventListener('transitionend', transitionCallback);
+  };
+
+  toggleCollapse = () => {
+    for(const element of this.collapseElements) {
+      if(this.collapsed === true) {
+        this.expandSection(element);
+      } else {
+        this.collapseSection(element);
+      }
+    }
+    this.collapsed = !this.collapsed;
+  };
+
   render() {
     return (
       <div name="price" id="price" className="pricing-container">
         <div className="prising-wrap">
-          <div className="price-item little-item">
+          <div className="price-item little-item" style={{height: 0}} ref={(el) => this.collapseElements.push(el)}>
             <div className="name">
               Month
             </div>
@@ -46,7 +84,6 @@ class Pricing extends Component {
             <div className="name">
               Trial Period
             </div>
-            <div className="price"></div>
             <div className="content">
               <div className="honeycomb">
                 <div>
@@ -67,7 +104,9 @@ class Pricing extends Component {
               </div>
             </div>
           </div>
-          <div className="price-item little-item">
+          <div className="price-item little-item" style={{height: 0}} ref={(el) => this.collapseElements.push(el)}>
+            {/*<div className="price-item little-item">*/}
+
             <div className="name">
               Year
             </div>
@@ -88,6 +127,12 @@ class Pricing extends Component {
                 </BasicButton>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="prising-more-btn">
+          <div onClick={this.toggleCollapse}>
+            More
+            <img src={Arrow} alt="arrow"/>
           </div>
         </div>
       </div>
