@@ -32,14 +32,14 @@ class AboutSection extends Component {
   }
 
   animateSideElements = () => {
-    if (isElementVisible(this.leftSection)) {
+    if (isElementVisible(this.leftSection, 0.3)) {
       if (this.state.leftSectionAnimateClass === "invisible")
         this.setState({leftSectionAnimateClass: "animation-fade-left"});
     } else {
       if (this.state.leftSectionAnimateClass === "animation-fade-left")
         this.setState({leftSectionAnimateClass: "invisible"});
     }
-    if (isElementVisible(this.rightSection)) {
+    if (isElementVisible(this.rightSection, 0.3)) {
       if (this.state.rightSectionAnimateClass === "invisible")
         this.setState({rightSectionAnimateClass: "animation-fade-right"});
     } else {

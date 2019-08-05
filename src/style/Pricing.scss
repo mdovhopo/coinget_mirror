@@ -73,9 +73,9 @@
       margin: 0;
       order: 2;
     }
-    overflow:hidden;
-    transition:height 0.3s ease-out;
-    height:auto;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    height: auto;
     width: 270px;
   }
 
@@ -105,7 +105,7 @@
 
   .big-item {
     width: 360px;
-      margin: 0 115px;
+    margin: 0 115px;
     @include respond-to-custom(0px, 1149px) {
       transform: scale(0.8);
       margin: 0;
@@ -137,16 +137,18 @@
 
 .prising-more-btn {
   @include respond-to-custom(1150px, -1) {
-    display:none;
+    display: none;
   }
   width: 100%;
   display: flex;
   justify-content: center;
   font-size: 24px;
+
   > div {
     &:hover {
       cursor: pointer;
     }
+
     img {
       width: 24px;
       margin: 0 10px;

@@ -6,19 +6,27 @@ export const isEmpty = (obj) => {
   return true;
 };
 
-export const isElementVisible = (el) => {
+/**
+ *
+ * @param el
+ * @param verticalOffset{number} 0.0 - 1.0
+ * @returns {boolean}
+ */
+
+export const isElementVisible = (el, verticalOffset = 0) => {
   if (!el || 1 !== el.nodeType) {
     return false;
   }
   const html = document.documentElement;
   const r = el.getBoundingClientRect();
-
   const clHeight = html.clientHeight;
+  console.log(r.top, clHeight);
+  const offset = verticalOffset * r.height;
 
   return (!!r
-    && r.bottom >= 0
+    && r.bottom - offset>= 0
     && r.right >= 0
-    && r.top <= clHeight
+    && r.top + offset <= clHeight
     && r.left <= html.clientWidth
   );
 };
