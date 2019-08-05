@@ -10,17 +10,29 @@ import Arrow from "Assets/arrow-2.png";
 
 
 class Pricing extends Component {
-  collapsed = true;
+  collapsed = false;
   collapseElements = [];
+
+  componentDidMount() {
+    const resizeCallback = () => {
+      const height = innerWidth > 1149 ? "auto" : "0px";
+      for (const element of this.collapseElements) {
+        element.style.height = height;
+      }
+      this.collapsed = true;
+    };
+    resizeCallback();
+    window.addEventListener("resize", resizeCallback);
+  }
 
   collapseSection = (element) => {
     const sectionHeight = element.scrollHeight;
     const elementTransition = element.style.transition;
     element.style.transition = '';
-    requestAnimationFrame(function() {
+    requestAnimationFrame(function () {
       element.style.height = sectionHeight + 'px';
       element.style.transition = elementTransition;
-      requestAnimationFrame(function() {
+      requestAnimationFrame(function () {
         element.style.height = 0 + 'px';
       });
     });
@@ -29,7 +41,7 @@ class Pricing extends Component {
   expandSection = (element) => {
     const sectionHeight = element.scrollHeight;
     element.style.height = sectionHeight + 'px';
-    const transitionCallback = e =>  {
+    const transitionCallback = e => {
       element.removeEventListener('transitionend', transitionCallback);
       element.style.height = null;
     };
@@ -37,8 +49,8 @@ class Pricing extends Component {
   };
 
   toggleCollapse = () => {
-    for(const element of this.collapseElements) {
-      if(this.collapsed === true) {
+    for (const element of this.collapseElements) {
+      if (this.collapsed === true) {
         this.expandSection(element);
       } else {
         this.collapseSection(element);
@@ -51,7 +63,7 @@ class Pricing extends Component {
     return (
       <div name="price" id="price" className="pricing-container">
         <div className="prising-wrap">
-          <div className="price-item little-item" style={{height: 0}} ref={(el) => this.collapseElements.push(el)}>
+          <div className="price-item little-item" ref={(el) => this.collapseElements.push(el)}>
             <div className="name">
               Month
             </div>
@@ -65,12 +77,12 @@ class Pricing extends Component {
                 </div>
               </div>
               <div className="footer ">
-              <BasicButton
-                onClick={() => EventEmitter.dispatch("openLoginForm", null)}
-              >
-                Sign Up
-              </BasicButton>
-                </div>
+                <BasicButton
+                  onClick={() => EventEmitter.dispatch("openLoginForm", null)}
+                >
+                  Sign Up
+                </BasicButton>
+              </div>
             </div>
           </div>
           <div className="price-item big-item">
@@ -87,7 +99,8 @@ class Pricing extends Component {
             <div className="content">
               <div className="honeycomb">
                 <div>
-                  <div className="center-x" style={{color: "white", fontSize: "79.5px", letterSpacing: "0.8px", fontWeight: "bold"}}>
+                  <div className="center-x"
+                       style={{color: "white", fontSize: "79.5px", letterSpacing: "0.8px", fontWeight: "bold"}}>
                     30
                   </div>
                   <div className="center-x" style={{fontSize: "48.5px", fontWeight: "bold", letterSpacing: "0.5px"}}>
@@ -104,9 +117,7 @@ class Pricing extends Component {
               </div>
             </div>
           </div>
-          <div className="price-item little-item" style={{height: 0}} ref={(el) => this.collapseElements.push(el)}>
-            {/*<div className="price-item little-item">*/}
-
+          <div className="price-item little-item" ref={(el) => this.collapseElements.push(el)}>
             <div className="name">
               Year
             </div>
