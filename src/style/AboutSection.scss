@@ -1,9 +1,9 @@
 @import "variables";
 @import "mixins";
 
-@mixin responsive-text-length() {
+@mixin responsive-text-length($length-on-large) {
   @include respond-to-custom($tablet-size + 1, -1) {
-    $text-length: 200px;
+    $text-length: $length-on-large;
     &:first-child {
       .item-text {
         @include honeycomb-content(380px, $text-length);
@@ -143,7 +143,8 @@
   .item-image {
     left: -24px;
   }
-  @include responsive-text-length();
+
+  @include responsive-text-length(200px);
 }
 
 .item-image {
@@ -176,7 +177,7 @@
     }
   }
 
-  @include responsive-text-length();
+  @include responsive-text-length(220px);
 }
 
 .honeycombs {
@@ -232,4 +233,78 @@
   span {
     display: inline-flex;
   }
+}
+
+$start-offset: 200px;
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-$start-offset);
+    transform: translateX(-$start-offset)
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0)
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-$start-offset);
+    -ms-transform: translateX(-$start-offset);
+    transform: translateX(-$start-offset)
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0)
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX($start-offset);
+    -ms-transform: translateX($start-offset);
+    transform: translateX($start-offset);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0)
+  }
+}
+
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX($start-offset);
+    transform: translateX($start-offset)
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0)
+  }
+}
+
+.animation-fade-left {
+  -webkit-animation: 0.5s fadeInLeft forwards;
+  -o-animation: 0.5s fadeInLeft forwards;
+  animation: 0.5s fadeInLeft forwards;
+}
+
+.animation-fade-right {
+  -webkit-animation: 0.5s fadeInRight forwards;
+  -o-animation: 0.5s fadeInRight forwards;
+  animation: 0.5s fadeInRight forwards;
+}
+
+.invisible {
+  visibility: hidden;
 }
