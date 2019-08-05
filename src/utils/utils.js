@@ -20,7 +20,6 @@ export const isElementVisible = (el, verticalOffset = 0) => {
   const html = document.documentElement;
   const r = el.getBoundingClientRect();
   const clHeight = html.clientHeight;
-  console.log(r.top, clHeight);
   const offset = verticalOffset * r.height;
 
   return (!!r
