@@ -6,7 +6,12 @@ import "Style/GetCoursePopUp";
 class GetCoursePopUp extends Component {
   render() {
     return (
-      <Modal className={"popup"} show={this.props.show} onHide={this.props.onClose} centered>
+      <Modal
+        dialogClassName={"popup-content"}
+        className={"popup"}
+        show={this.props.show}
+        onHide={this.props.onClose}
+        centered>
         <Modal.Header className={"popup-header"}>
           <Modal.Title>Get Course</Modal.Title>
         </Modal.Header>

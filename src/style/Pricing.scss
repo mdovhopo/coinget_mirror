@@ -5,17 +5,26 @@
   padding-top: 46px;
   padding-bottom: 44px;
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   .prising-wrap {
     text-align: center;
     width: 100%;
     max-width: 1440px;
+    @include respond-to-custom(0px, 1149px) {
+      align-items: center;
+      display: flex;
+      flex-direction: column
+    }
   }
+
   .price-item {
     display: inline-block;
     position: relative;
   }
+
   .name {
     padding: 17px;
     background-color: $background-color-dark;
@@ -25,6 +34,7 @@
     letter-spacing: 0.3px;
     font-weight: bold;
   }
+
   .price {
     padding: 12px;
     border-bottom: 8px solid $primary-color;
@@ -33,9 +43,11 @@
     letter-spacing: 0.2px;
     text-align: center;
   }
+
   .content {
     background-color: $background-color;
   }
+
   .honeycomb {
     height: 170px;
     justify-content: center;
@@ -43,8 +55,10 @@
     display: inline-flex;
     width: 100%;
   }
+
   .footer {
     padding: 0 12px 12px;
+
     a {
       width: 100%;
       display: block;
@@ -52,42 +66,60 @@
       padding: 10px;
     }
   }
+
   .little-item {
+    @include respond-to-custom(0px, 1149px) {
+      transform: scale(0.9);
+      margin: 0;
+      order: 2;
+    }
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    height: auto;
     width: 270px;
-    @include respond-to(tablet) {display: none}
-    @include respond-to-custom(0px, 1150px) {display: none}
   }
+
   .honeycomb-item {
     width: 180px;
     height: 160px;
     position: relative;
     left: 13px;
   }
+
   .sale {
     display: block;
     position: absolute;
     top: -24px;
     left: -52px;
+
     .honeycomb {
       height: auto !important;
       background-color: transparent !important;
+
       .honeycomb-item {
         width: 203px;
         height: 183px;
       }
     }
   }
+
   .big-item {
     width: 360px;
-    @include respond-to-custom(0px, 1149px) {transform: scale(0.8); margin: 0;}
-    @include respond-to-custom(1150px, 9999px) {margin: 0 115px;}
+    margin: 0 115px;
+    @include respond-to-custom(0px, 1149px) {
+      transform: scale(0.8);
+      margin: 0;
+    }
+
     .name {
       padding-left: 70px;
     }
+
     .price {
       padding: 0;
       border-color: $white;
     }
+
     .honeycomb {
       height: 250px;
       background-color: $primary-color;
@@ -95,9 +127,31 @@
       flex-direction: column;
       justify-content: center;
     }
+
     .footer {
       background-color: $black;
       padding: 22px 12px;
+    }
+  }
+}
+
+.prising-more-btn {
+  @include respond-to-custom(1150px, -1) {
+    display: none;
+  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+
+  > div {
+    &:hover {
+      cursor: pointer;
+    }
+
+    img {
+      width: 24px;
+      margin: 0 10px;
     }
   }
 }

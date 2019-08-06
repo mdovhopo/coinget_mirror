@@ -5,15 +5,65 @@ import HoneyComb10 from "Assets/honeycomb-10.png"
 import HoneyComb99 from "Assets/honeycomb-99.png"
 import HoneyCombFree from "Assets/honeycomb-free.png";
 import {connect} from "react-redux";
-import {switchLoginFormWrap} from "Redux/actions/actionWrappers";
 import EventEmitter from "Utils/EventEmitter";
+import Arrow from "Assets/arrow-2.png";
+
 
 class Pricing extends Component {
+  collapsed = false;
+  collapseElements = [];
+
+  componentDidMount() {
+    const resizeCallback = () => {
+      const height = innerWidth > 1149 ? "auto" : "0px";
+      for (const element of this.collapseElements) {
+        element.style.height = height;
+      }
+      this.collapsed = true;
+    };
+    resizeCallback();
+    window.addEventListener("resize", resizeCallback);
+  }
+
+  collapseSection = (element) => {
+    const sectionHeight = element.scrollHeight;
+    const elementTransition = element.style.transition;
+    element.style.transition = '';
+    requestAnimationFrame(function () {
+      element.style.height = sectionHeight + 'px';
+      element.style.transition = elementTransition;
+      requestAnimationFrame(function () {
+        element.style.height = 0 + 'px';
+      });
+    });
+  };
+
+  expandSection = (element) => {
+    const sectionHeight = element.scrollHeight;
+    element.style.height = sectionHeight + 'px';
+    const transitionCallback = e => {
+      element.removeEventListener('transitionend', transitionCallback);
+      element.style.height = null;
+    };
+    element.addEventListener('transitionend', transitionCallback);
+  };
+
+  toggleCollapse = () => {
+    for (const element of this.collapseElements) {
+      if (this.collapsed === true) {
+        this.expandSection(element);
+      } else {
+        this.collapseSection(element);
+      }
+    }
+    this.collapsed = !this.collapsed;
+  };
+
   render() {
     return (
       <div name="price" id="price" className="pricing-container">
         <div className="prising-wrap">
-          <div className="price-item little-item">
+          <div className="price-item little-item" ref={(el) => this.collapseElements.push(el)}>
             <div className="name">
               Month
             </div>
@@ -27,12 +77,12 @@ class Pricing extends Component {
                 </div>
               </div>
               <div className="footer ">
-              <BasicButton
-                onClick={() => EventEmitter.dispatch("openLoginForm", null)}
-              >
-                Sign Up
-              </BasicButton>
-                </div>
+                <BasicButton
+                  onClick={() => EventEmitter.dispatch("openLoginForm", null)}
+                >
+                  Sign Up
+                </BasicButton>
+              </div>
             </div>
           </div>
           <div className="price-item big-item">
@@ -46,11 +96,11 @@ class Pricing extends Component {
             <div className="name">
               Trial Period
             </div>
-            <div className="price"></div>
             <div className="content">
               <div className="honeycomb">
                 <div>
-                  <div className="center-x" style={{color: "white", fontSize: "79.5px", letterSpacing: "0.8px", fontWeight: "bold"}}>
+                  <div className="center-x"
+                       style={{color: "white", fontSize: "79.5px", letterSpacing: "0.8px", fontWeight: "bold"}}>
                     30
                   </div>
                   <div className="center-x" style={{fontSize: "48.5px", fontWeight: "bold", letterSpacing: "0.5px"}}>
@@ -67,7 +117,7 @@ class Pricing extends Component {
               </div>
             </div>
           </div>
-          <div className="price-item little-item">
+          <div className="price-item little-item" ref={(el) => this.collapseElements.push(el)}>
             <div className="name">
               Year
             </div>
@@ -88,6 +138,12 @@ class Pricing extends Component {
                 </BasicButton>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="prising-more-btn">
+          <div onClick={this.toggleCollapse}>
+            More
+            <img src={Arrow} alt="arrow"/>
           </div>
         </div>
       </div>
