@@ -8,22 +8,22 @@ class SocialAuthGoogle extends Component {
     const responseGoogle = (response) => {
       console.log(response);
     };
-      // {/*<div className="auth" onClick={() => console.log("Google login")}>*/}
-      // {/*  <div className="logo">*/}
-      // {/*    <img src={Google} alt="google logo"/>*/}
-      // {/*  </div>*/}
-      // {/*  Sign in with Google*/}
-      // {/*</div>*/}
+      // {/*<GoogleLogin*/}
+      // {/*  clientId="<API_KEY>"*/}
+      // {/*  className="auth"*/}
+      // {/*  style={{width: "100%"}}*/}
+      // {/*  buttonText="Sign in with Google"*/}
+      // {/*  onSuccess={responseGoogle}*/}
+      // {/*  onFailure={responseGoogle}*/}
+      // {/*  cookiePolicy={'single_host_origin'}*/}
+      // {/*/>*/}
     return (
-      <GoogleLogin
-        clientId="<API_KEY>"
-        className="auth"
-        style={{width: "100%"}}
-        buttonText="Sign in with Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-      />
+      <div className="auth" onClick={() => console.log("Google login")}>
+        <div className="logo">
+          <img src={Google} alt="google logo"/>
+        </div>
+        Sign in with Google
+      </div>
     );
   }
 }
