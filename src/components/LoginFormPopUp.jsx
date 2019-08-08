@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import Modal from "react-bootstrap/Modal";
 import BasicButton from "Components/BasicButton";
 import "Style/LoginFormPopUp";
-import Google from "Assets/logo-google.png";
-import Facebook from "Assets/facebook.png";
 import Restore from "Assets/symbol-restore.png";
 import Cross from "Assets/icons8-delete-40.png";
 import validateInput from "Utils/inputValidate";
 import {authRequest, profileRedirect} from "Utils/api";
+import FacebookLogin from 'react-facebook-login';
+import SocialAuthGoogle from "Components/SocialAuthGoogle";
+import SocialAuthFB from "Components/SocialAuthFB";
 
 class LoginFormPopUp extends Component {
   state = {
@@ -53,9 +54,24 @@ class LoginFormPopUp extends Component {
   );
 
   actionsContent = {
-    "sign in": {headerName :"Login", footerContent: this._renderSignInFooter(), submitBtnName: "Sign in", api: "/auth/login"},
-    "register": {headerName: "Create an Account", footerContent: this._renderRegisterFooter(), submitBtnName: "Register", api: "/register"},
-    "restore": {headerName: "Restore password", footerContent: this._renderRestoreFooter(), submitBtnName: "Restore" , api: "/password/email"}
+    "sign in": {
+      headerName: "Login",
+      footerContent: this._renderSignInFooter(),
+      submitBtnName: "Sign in",
+      api: "/auth/login"
+    },
+    "register": {
+      headerName: "Create an Account",
+      footerContent: this._renderRegisterFooter(),
+      submitBtnName: "Register",
+      api: "/register"
+    },
+    "restore": {
+      headerName: "Restore password",
+      footerContent: this._renderRestoreFooter(),
+      submitBtnName: "Restore",
+      api: "/password/email"
+    }
   };
 
   _sendAuthRequest = () => {
@@ -132,18 +148,8 @@ class LoginFormPopUp extends Component {
         </Modal.Header>
         <Modal.Body className="login-body">
           <div className="login-social-auth">
-            <div className="auth" onClick={() => console.log("Google login")}>
-              <div className="logo">
-                <img src={Google} alt="google logo"/>
-              </div>
-              Sign in with Google
-            </div>
-            <div className="auth" onClick={() => console.log("FB login")}>
-              <div className="logo">
-                <img src={Facebook} alt="facebook logo"/>
-              </div>
-              Sign in with Facebook
-            </div>
+            <SocialAuthGoogle />
+            <SocialAuthFB />
           </div>
           <div className="or-line">
             <span>or</span>
@@ -151,9 +157,9 @@ class LoginFormPopUp extends Component {
           <form className="login-form">
             {mode === "sign in" || mode === "restore" ? undefined :
               <input name="name" onChange={this.onInputChange} type="text" placeholder="Name"/>}
-                <input name="email" onChange={this.onInputChange} type="email" placeholder="Email"/>
+            <input name="email" onChange={this.onInputChange} type="email" placeholder="Email"/>
             {mode === "restore" ? undefined :
-            <input name="password" onChange={this.onInputChange} type="password" placeholder="Password"/>}
+              <input name="password" onChange={this.onInputChange} type="password" placeholder="Password"/>}
           </form>
           <div className="error-msg">
             {this.state.errorMsg}

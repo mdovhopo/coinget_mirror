@@ -1,0 +1,27 @@
+@import "mixins";
+
+.auth {
+  margin: 10px 10px !important;
+  background: transparent;
+  @include respond-to(mobile) {
+    width: 90%;
+    margin: 10px 0;
+  }
+  border-radius: 5px;
+  border: 1px solid #959595;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 32px;
+  cursor: pointer;
+
+  .logo {
+    padding-right: 1rem;
+  }
+
+  &:hover {
+    border: 1px solid #000000;
+  }
+}

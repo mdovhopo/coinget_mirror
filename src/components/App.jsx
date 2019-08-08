@@ -4,7 +4,6 @@ import TryItNowSection from "Components/TryItNowSection";
 import CourseSection from "Components/CourseSection";
 import Header from "Components/Header";
 import AboutSection from "Components/AboutSection";
-// import Slider from "Components/Slider";
 import Pricing from "Components/Pricing";
 import SupportedExchanges from "Components/SupportedExchanges";
 import Footer from "Components/Footer";
@@ -17,49 +16,6 @@ import Slider from "Components/Slider";
 
 // TODO google fb login
 // reference: https://medium.com/@rocksinghajay/login-with-facebook-and-google-in-reactjs-990d818d5dab
-
-// import FacebookLogin from 'react-facebook-login';
-//
-// import GoogleLogin from 'react-google-login';
-//
-// class App extends Component {
-//
-//   render() {
-//
-//     const responseFacebook = (response) => {
-//       console.log(response);
-//     };
-//
-//     const responseGoogle = (response) => {
-//       console.log(response);
-//     };
-//
-//     return (
-//       <div className="App">
-//         <h1>LOGIN WITH FACEBOOK AND GOOGLE</h1>
-//
-//         <FacebookLogin
-//           appId="" //APP ID NOT CREATED YET
-//           fields="name,email,picture"
-//           callback={responseFacebook}
-//         />
-//         <br />
-//         <br />
-//
-//
-//         <GoogleLogin
-//           clientId="" //CLIENTID NOT CREATED YET
-//           buttonText="LOGIN WITH GOOGLE"
-//           onSuccess={responseGoogle}
-//           onFailure={responseGoogle}
-//         />
-//
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
 
 class App extends Component {
   componentDidMount() {
@@ -74,15 +30,12 @@ class App extends Component {
     });
   }
   render() {
-    // console.log("App", this.props);
     return (
       <>
         <ConnectWebSocket />
         <SubscribeOnCoins />
         <NavBar/>
-        {/*<ParallaxProvider>*/}
-          <TryItNowSection/>
-        {/*</ParallaxProvider>*/}
+        <TryItNowSection/>
         <CourseSection/>
         <Header>About Coinget</Header>
         <AboutSection/>
