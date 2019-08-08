@@ -35,7 +35,7 @@ class Footer extends Component {
           <div
             className="wrap">
             <a
-              href="#"
+              href="/terms"
               className="link">
                 <span> Terms and Conditions</span>
             </a>
