@@ -21,6 +21,7 @@ import EventEmitter from "Utils/EventEmitter";
 import ParallaxItem from "Components/ParallaxItem";
 import {MoonLoader} from "react-spinners";
 import {css} from "@emotion/core";
+import {CONTENT_LOADING_ERROR, CONTENT_LOADING_IN_PROGRESS, CONTENT_SETTINGS_NOT_COMPLETE} from "Constants/index";
 
 const parallaxShapesParams = [
   {className: "parallax-shape-left sphere-1", startOffset: 250, speed: 0.6, src: Sphere1},
@@ -47,7 +48,7 @@ class TryItNowSection extends Component {
       currentExchange: "",
       currentCurrency: "",
       currentDate: 0,
-      currentCourse: -1
+      currentCourse: CONTENT_SETTINGS_NOT_COMPLETE
     }
   }
 
@@ -67,13 +68,17 @@ class TryItNowSection extends Component {
     const {currentExchange, currentCurrency, currentDate} = this.state;
     if (currentExchange === "" || currentCurrency === "" || currentDate === 0)
       return this.setState({showGetCourse: true});
+    this.setState({showGetCourse: true, currentCourse: CONTENT_LOADING_IN_PROGRESS});
     getCourse(currentExchange, currentCurrency, currentDate)
-      .then(res => this.setState({currentCourse: res.data, showGetCourse: true}))
-      .catch(() => this.setState({showGetCourse: true}));
+      .then(res => this.setState({currentCourse: res.data}))
+      .catch(() => this.setState({showGetCourse: true, currentCourse: CONTENT_LOADING_ERROR}));
   };
 
   closeGetCourse = (e) => {
-    this.setState({showGetCourse: false, currentCourse: -1});
+    this.setState({showGetCourse: false});
+    setTimeout(
+      () => this.setState({currentCourse: CONTENT_SETTINGS_NOT_COMPLETE}),
+    300);
   };
 
 
@@ -158,7 +163,7 @@ class TryItNowSection extends Component {
                   <GetCoursePopUp
                     show={this.state.showGetCourse}
                     onClose={this.closeGetCourse}
-                    onErrorText="Select exchange, coin and date first"
+                    onErrorText="Error."
                     course={this.state.currentCourse}
                   />
                 </div>
