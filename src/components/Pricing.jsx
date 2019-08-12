@@ -10,8 +10,13 @@ import Arrow from "Assets/arrow-2.png";
 
 
 class Pricing extends Component {
-  collapsed = false;
+  // collapsed = true;
+  COLLAPSE_ELEMENTS_AMOUNT = 2;
   collapseElements = [];
+
+  state = {
+    collapsed: true
+  };
 
   componentDidMount() {
     const resizeCallback = () => {
@@ -19,7 +24,7 @@ class Pricing extends Component {
       for (const element of this.collapseElements) {
         element.style.height = height;
       }
-      this.collapsed = true;
+      this.setState({collapsed: true});
     };
     resizeCallback();
     window.addEventListener("resize", resizeCallback);
@@ -49,21 +54,28 @@ class Pricing extends Component {
   };
 
   toggleCollapse = () => {
+    const {collapsed} = this.state;
     for (const element of this.collapseElements) {
-      if (this.collapsed === true) {
+      if (collapsed === true) {
         this.expandSection(element);
       } else {
         this.collapseSection(element);
       }
     }
-    this.collapsed = !this.collapsed;
+    this.setState({collapsed: !collapsed});
   };
 
   render() {
+    const {collapsed} = this.state;
+    const expandBtnText = collapsed ? "More" : "Less";
+    const expandBtnIconStyle = collapsed ? {} : {transform: "rotate(180deg) translateY(3px)"};
     return (
       <div name="price" id="price" className="pricing-container">
         <div className="prising-wrap">
-          <div className="price-item little-item" ref={(el) => this.collapseElements.push(el)}>
+          <div className="price-item little-item" ref={(el) => {
+            if (this.collapseElements.length < this.COLLAPSE_ELEMENTS_AMOUNT)
+              this.collapseElements.push(el)
+          }}>
             <div className="name">
               Month
             </div>
@@ -117,7 +129,10 @@ class Pricing extends Component {
               </div>
             </div>
           </div>
-          <div className="price-item little-item" ref={(el) => this.collapseElements.push(el)}>
+          <div className="price-item little-item" ref={(el) => {
+            if (this.collapseElements.length < this.COLLAPSE_ELEMENTS_AMOUNT)
+              this.collapseElements.push(el)
+          }}>
             <div className="name">
               Year
             </div>
@@ -142,8 +157,8 @@ class Pricing extends Component {
         </div>
         <div className="prising-more-btn">
           <div onClick={this.toggleCollapse}>
-            More
-            <img src={Arrow} alt="arrow"/>
+            {expandBtnText}
+            <img src={Arrow} style={expandBtnIconStyle} alt="arrow"/>
           </div>
         </div>
       </div>
@@ -152,4 +167,4 @@ class Pricing extends Component {
   }
 }
 
-export default connect()(Pricing);
+export default Pricing;
