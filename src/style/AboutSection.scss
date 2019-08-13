@@ -87,6 +87,7 @@
       p {
         cursor: pointer;
         box-shadow: 10px 5px 10px 10px #888888;
+        transition: box-shadow 0.1s ease-in-out;
       }
     }
   &.item-left {
@@ -94,6 +95,7 @@
         img {
           cursor: pointer;
           filter: drop-shadow(10px 10px 10px #888888);
+          transition: filter 0.1s ease-in-out;
         }
       }
     }
@@ -102,6 +104,7 @@
         img {
           cursor: pointer;
           filter: drop-shadow(-10px 10px 10px #888888);
+          transition: filter 0.1s ease-in-out;
         }
       }
     }

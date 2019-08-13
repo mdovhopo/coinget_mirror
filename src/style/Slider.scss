@@ -22,6 +22,7 @@
     &:hover {
       cursor: pointer;
       box-shadow: 3px 3px 3px 3px #121212;
+      transition: box-shadow 0.1s ease-in-out;
     }
     font-size: 32px;
     color: red;
