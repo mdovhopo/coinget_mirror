@@ -5,6 +5,7 @@ import RightArrow from "Assets/arow-g-rigth.png";
 import Layer409 from "Assets/layer-409.png";
 import Layer410 from "Assets/layer-410.png";
 import Layer407 from "Assets/layer-410.png";
+import PhotoModal from "Components/PhotoModal";
 
 class Slider extends Component {
   constructor(props) {
@@ -12,7 +13,9 @@ class Slider extends Component {
     this.state = {
       photos: [Layer407, Layer409, Layer410],
       minIndex: 0,
-      width: 0
+      width: 0,
+      photoModalOpen: false,
+      clickedPhoto: ""
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -66,7 +69,11 @@ class Slider extends Component {
   _renderGallery = () => {
     const visiblePhotos = this._getImages();
     return visiblePhotos.map((photo, i) => (
-      <img key={i} className="gallery-photo" src={photo} alt=""/>
+      <img
+        key={i}
+        onClick={() => {this.openPhotoModal(photo)}}
+        className="gallery-photo"
+        src={photo} alt="image"/>
     ));
   };
 
@@ -98,6 +105,14 @@ class Slider extends Component {
     });
   };
 
+  openPhotoModal = (photo) => {
+    this.setState({photoModalOpen: true, clickedPhoto: photo});
+  };
+
+  closePhotoModal = () => {
+    this.setState({photoModalOpen: false});
+  };
+
   render() {
     return (
       <div className="slider-container">
@@ -109,6 +124,11 @@ class Slider extends Component {
         <div className="slider-nav">
           {this._renderSliderNav()}
         </div>
+        <PhotoModal
+          show={this.state.photoModalOpen}
+          photo={this.state.clickedPhoto}
+          onClose={this.closePhotoModal}
+        />
       </div>
     );
   }

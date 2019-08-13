@@ -8,11 +8,22 @@ import SignApp from "Assets/sign-app.png";
 import SignApp2 from "Assets/sign-app-2.png";
 import OneSec from "Assets/1-sec.png";
 import {isElementVisible} from "Utils/utils";
+import AboutItemModal from "Components/AboutItemModal";
 
 class AboutSection extends Component {
   state = {
     leftSectionAnimateClass: "invisible",
     rightSectionAnimateClass: "invisible",
+    descriptionModalOpen: false,
+    currentDescription: ""
+  };
+
+  openAboutItemModal = (item) => {
+    this.setState({descriptionModalOpen: true, currentDescription: item});
+  };
+
+  closeAboutItemModal = () => {
+    this.setState({descriptionModalOpen: false});
   };
 
   componentDidMount() {
@@ -64,7 +75,9 @@ class AboutSection extends Component {
             <div className={"left-section " + leftSectionAnimateClass} ref={(el) => {
               this.leftSection = el
             }}>
-              <div className="about-item item-left">
+              <div className="about-item item-left"
+                   onClick={() => this.openAboutItemModal("left_1")}
+              >
                 <div className="item-text">
                   <p>
                             <span>
@@ -76,7 +89,9 @@ class AboutSection extends Component {
                   <img src={Sign} alt=""/>
                 </div>
               </div>
-              <div className="about-item item-left">
+              <div className="about-item item-left"
+                   onClick={() => this.openAboutItemModal("left_2")}
+              >
                 <div className="item-text">
                   <p>
                             <span>
@@ -88,7 +103,9 @@ class AboutSection extends Component {
                   <img src={SignAnalytics} alt=""/>
                 </div>
               </div>
-              <div className="about-item item-left">
+              <div className="about-item item-left"
+                   onClick={() => this.openAboutItemModal("left_3")}
+              >
                 <div className="item-text">
                   <p>
                             <span>
@@ -114,7 +131,9 @@ class AboutSection extends Component {
             <div className={"right-section " + rightSectionAnimateClass} ref={(el) => {
               this.rightSection = el}
             }>
-              <div className="about-item item-right">
+              <div className="about-item item-right"
+                   onClick={() => this.openAboutItemModal("right_1")}
+              >
                 <div className="item-image">
                   <img src={SignApp} alt=""/>
                 </div>
@@ -126,7 +145,9 @@ class AboutSection extends Component {
                   </p>
                 </div>
               </div>
-              <div className="about-item item-right">
+              <div className="about-item item-right"
+                   onClick={() => this.openAboutItemModal("right_2")}
+              >
                 {/**/}
                 <div className="item-image">
                   <img src={SignApp2} alt=""/>
@@ -140,7 +161,9 @@ class AboutSection extends Component {
                   </p>
                 </div>
               </div>
-              <div className="about-item item-right">
+              <div className="about-item item-right"
+                   onClick={() => this.openAboutItemModal("right_3")}
+              >
                 {/**/}
                 <div className="item-image">
                   <img src={OneSec} alt=""/>
@@ -156,6 +179,11 @@ class AboutSection extends Component {
             </div>
           </div>
         </div>
+        <AboutItemModal
+          show={this.state.descriptionModalOpen}
+          onClose={this.closeAboutItemModal}
+          name={this.state.currentDescription}
+        />
       </div>
     );
   }

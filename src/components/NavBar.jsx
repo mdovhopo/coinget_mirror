@@ -23,21 +23,23 @@ class NavBar extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
-    getProfile(token)
-      .then(res => {
-        if (res.status === 200) {
-          // TODO if token valid use it for login.
-          // Also need to find the way to check if token valid.
-          localStorage.removeItem("token");
-          console.log("Auth token valid! Set login button to profile");
-          // this.setState({authorized: true, locationURL: res.config.url});
-        }
-      })
-      .catch((err) => {
-        // console.log(err);
-        console.log("Auth token is not valid! removing...");
-        localStorage.removeItem("token")
-      });
+    console.log(token ? "Auth token exist!" : "No auth token");
+    // Remove token anyway.
+    // TODO if token valid and use it for login.
+    localStorage.removeItem("token");
+
+    // getProfile(token)
+    //   .then(res => {
+    //     if (res.status === 200) {
+    //       console.log("Auth token valid! Set login button to profile");
+    //       this.setState({authorized: true, locationURL: res.config.url});
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     // console.log(err);
+    //     console.log("Auth token is not valid! removing...");
+    //     localStorage.removeItem("token")
+    //   });
   }
 
   handleLoginForm = () => {
