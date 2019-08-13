@@ -85,20 +85,26 @@
   &:hover {
     .item-text {
       p {
+        cursor: pointer;
         box-shadow: 10px 5px 10px 10px #888888;
+        transition: box-shadow 0.1s ease-in-out;
       }
     }
   &.item-left {
       .item-image {
         img {
+          cursor: pointer;
           filter: drop-shadow(10px 10px 10px #888888);
+          transition: filter 0.1s ease-in-out;
         }
       }
     }
     &.item-right {
       .item-image {
         img {
+          cursor: pointer;
           filter: drop-shadow(-10px 10px 10px #888888);
+          transition: filter 0.1s ease-in-out;
         }
       }
     }
