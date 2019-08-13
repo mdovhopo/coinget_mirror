@@ -82,6 +82,29 @@
   display: flex;
   align-items: center;
   margin-bottom: 23px;
+  &:hover {
+    .item-text {
+      p {
+        box-shadow: 10px 5px 10px 10px #888888;
+      }
+    }
+  &.item-left {
+      .item-image {
+        img {
+          filter: drop-shadow(10px 10px 10px #888888);
+        }
+      }
+    }
+    &.item-right {
+      .item-image {
+        img {
+          filter: drop-shadow(-10px 10px 10px #888888);
+        }
+      }
+    }
+  }
+
+
 }
 
 .center-section {

@@ -143,7 +143,9 @@ class LoginFormPopUp extends Component {
         <Modal.Header className="login-header">
           <Modal.Title bsPrefix="login-header-content">
             <div>{actionContent.headerName}</div>
-            <div onClick={this.props.onHide}><img src={Cross} alt="close" width={30} height={30}/></div>
+            <div onClick={this.props.onHide} className="close-cross right">
+              {/*<img src={Cross} alt="close" width={30} height={30}/>*/}
+            </div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="login-body">

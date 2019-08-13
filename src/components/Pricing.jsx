@@ -25,7 +25,6 @@ class Pricing extends Component {
       }
       if (this.state.collapsed === false)
         this.toggleCollapse();
-      console.log("resize", height);
     };
     resizeCallback();
     window.addEventListener("resize", resizeCallback);
@@ -56,7 +55,6 @@ class Pricing extends Component {
 
   toggleCollapse = () => {
     const {collapsed} = this.state;
-    console.log("Toggle collaps", collapsed);
     for (const element of this.collapseElements) {
       if (collapsed === true) {
         this.expandSection(element);
@@ -69,7 +67,6 @@ class Pricing extends Component {
 
   render() {
     const {collapsed} = this.state;
-    console.log("Pricing", collapsed);
     const expandBtnText = collapsed ? "More" : "Less";
     const expandBtnIconStyle = collapsed ? {} : {transform: "rotate(180deg) translateY(3px)"};
     return (

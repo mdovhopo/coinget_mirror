@@ -54,3 +54,34 @@ ol, ul {
   padding: 16px 25px;
   margin-bottom: 31px;
 }
+
+.close-cross {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  &:after {
+    opacity: 1;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    opacity: 1;
+  }
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: white;
+
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
