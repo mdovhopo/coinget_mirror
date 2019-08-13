@@ -19,6 +19,10 @@
   //min-height: 500px;
 
   .gallery-photo {
+    &:hover {
+      cursor: pointer;
+      box-shadow: 3px 3px 3px 3px #121212;
+    }
     font-size: 32px;
     color: red;
     width: 450px;
@@ -42,6 +46,9 @@
   justify-content: center;
   margin-bottom: 40px;
   .slider-point {
+    &:hover {
+      cursor: pointer;
+    }
     width: 19px;
     height: 19px;
     object-fit: contain;
