@@ -335,3 +335,29 @@ $start-offset: 200px;
 .invisible {
   visibility: hidden;
 }
+
+.popup {
+  &--about-item-body {
+    & > div {
+      -webkit-border-radius: .5rem;
+      -moz-border-radius: .5rem;
+      border-radius: .5rem;
+    }
+  }
+  &--about-item-desc {
+    max-height: 500px;
+    overflow-y: scroll;
+    padding-left: 25px !important;
+  }
+
+  &--about-item-title {
+    padding: 20px 25px !important;
+    background: #2c2e30;
+    color: $white;
+  }
+}
+
+.right {
+  right: 25px;
+  top: 15px;
+}
