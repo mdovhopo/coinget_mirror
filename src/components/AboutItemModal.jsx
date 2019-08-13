@@ -23,7 +23,7 @@ class AboutItemModal extends Component {
         show={show}
         onHide={onClose}
         centered>
-        <Modal.Header className="popup--about-item-title">
+        <Modal.Header as={"h4"} className="popup--about-item-title">
           {name}
           <div onClick={onClose} className="close-cross right">
           </div>
