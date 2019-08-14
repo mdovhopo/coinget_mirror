@@ -78,7 +78,7 @@ class TryItNowSection extends Component {
     this.setState({showGetCourse: false});
     setTimeout(
       () => this.setState({currentCourse: CONTENT_SETTINGS_NOT_COMPLETE}),
-    300);
+      300);
   };
 
 
@@ -107,9 +107,10 @@ class TryItNowSection extends Component {
             );
           }
         )}
-        <div className="try-it-now-inner-section">
+        <div className="try-it-now-inner-section"
+             onClick={() => EventEmitter.dispatch("closeSvgBtnDropdown")}
+        >
           <div className="heading">
-            {/*<ParallaxOverlay />*/}
             <p>CRYPTO TRADING ANALYTIC TOOL</p>
             <div className="px-1">
               <span>Desktop app for true profit and loss calculations across multiple exchanges</span>
