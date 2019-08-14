@@ -27,6 +27,11 @@
   display: flex;
   justify-content: space-between;
   padding: 0 40px !important;
+  margin: 0 !important;
+  .right {
+    right: 50px;
+    top: 18px;
+  }
 }
 
 .login-body {
@@ -245,6 +250,4 @@
   }
 }
 
-.right {
-  right: 50px;
-}
+
