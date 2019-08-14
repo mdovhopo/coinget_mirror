@@ -4,10 +4,11 @@ import "Style/TryItNowSection";
 import Arrow from "Assets/arrow-2.png";
 import moment from "moment";
 import DateFnsUtils from "@date-io/date-fns"; // choose your lib
-import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import {MuiThemeProvider} from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core'
+import {createMuiTheme} from '@material-ui/core'
 import {MS_PER_MINUTE} from "Constants/index";
+import EventEmitter from "Utils/EventEmitter";
 
 
 const DateTimePickerTheme = createMuiTheme({
@@ -28,6 +29,12 @@ class DropDownSVG extends Component {
       activeText: "",
       selectedDate: ""
     };
+    EventEmitter.subscribe("closeSvgBtnDropdown",
+      () => {
+        if (this.state.active === true)
+          this.setState({active: false})
+      }
+    );
   }
 
   _renderDropDownItems = () => {
@@ -53,17 +60,17 @@ class DropDownSVG extends Component {
       const {content, loadingContent} = this.props;
       if (content === undefined || content.length === 0) {
         return (
-        <ul className={"svg-dropdown " + active}>
-          <li>{loadingContent}</li>
-        </ul>
+          <ul className={"svg-dropdown " + active}>
+            <li>{loadingContent}</li>
+          </ul>
         );
       }
       return (
-      <ul className={"svg-dropdown " + active} >
-        {content.map((item, index) => (
-          <li key={index} onClick={() => this.handleSelectOption(item)}>{item}</li>
-        ))}
-      </ul>
+        <ul className={"svg-dropdown " + active}>
+          {content.map((item, index) => (
+            <li key={index} onClick={() => this.handleSelectOption(item)}>{item}</li>
+          ))}
+        </ul>
       );
     }
   };
@@ -81,9 +88,9 @@ class DropDownSVG extends Component {
   handleOpenDropDown = () => {
     if (this.props.datepicker) {
       if (this.state.active === false) this.setState({active: true});
-    }
-    else this.setState({active: !this.state.active});
+    } else this.setState({active: !this.state.active});
   };
+
   render() {
     const height = 60;
     const {width} = this.props;
@@ -93,12 +100,13 @@ class DropDownSVG extends Component {
         <div className={"get-course-icon-wrap"}>
           <img src={this.props.icon} className="get-course-icon" alt={"exchange name icon"}/>
         </div>
-        <div className={"svg-wrapper"} onClick={this.handleOpenDropDown} style={{width: width, zIndex: this.props.zIndex}}>
+        <div className={"svg-wrapper"} onClick={this.handleOpenDropDown}
+             style={{width: width, zIndex: this.props.zIndex}}>
           <svg height={height} width={width} xmlns="http://www.w3.org/2000/svg">
             <rect className={"shape " + this.props.style} height="60" width={this.props.width}/>
           </svg>
           <div className="text">
-            {this.state.activeText ? this.state.activeText :  this.props.children}
+            {this.state.activeText ? this.state.activeText : this.props.children}
             <img className="svg-btn-arrow" src={Arrow} alt="arrow"/>
           </div>
           {this._renderDropDownItems()}

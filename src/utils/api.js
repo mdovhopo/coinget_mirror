@@ -1,4 +1,5 @@
 import axios from "axios";
+import {DASHBOARD_URL} from "Constants/index";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api/price/rate";
 const loginAPI = "https://coinget.io/api";
@@ -43,7 +44,7 @@ export const profileRedirect = (token) => {
   })
     .then(() => {
       localStorage.setItem('token', token);
-      window.location.href = "https://coinget.io/home";
+      window.location.href = DASHBOARD_URL;
     })
     .catch();
 };
