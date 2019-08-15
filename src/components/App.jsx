@@ -13,22 +13,24 @@ import ConnectWebSocket from "Components/ConnectWebSocket";
 import SubscribeOnCoins from "Components/SubscribeOnCoins";
 import Slider from "Components/Slider";
 
-
 // TODO google fb login
 // reference: https://medium.com/@rocksinghajay/login-with-facebook-and-google-in-reactjs-990d818d5dab
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
       });
     });
-  }
+  });
+}
   render() {
     return (
       <>
