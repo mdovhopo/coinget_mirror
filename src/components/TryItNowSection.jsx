@@ -108,7 +108,10 @@ class TryItNowSection extends Component {
           }
         )}
         <div className="try-it-now-inner-section"
-             onClick={() => EventEmitter.dispatch("closeSvgBtnDropdown")}
+             onClick={(e) => {
+               if (e._dispatchInstances.length === undefined)
+                EventEmitter.dispatch("closeSvgBtnDropdown")
+             }}
         >
           <div className="heading">
             <p>CRYPTO TRADING ANALYTIC TOOL</p>

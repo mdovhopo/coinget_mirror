@@ -46,24 +46,6 @@ class App extends Component {
         <NavBar/>
         <TryItNowSection/>
         <CourseSection/>
-        <div className="row bg-white">
-          <div className="col-6">
-            <Chart
-              width={600}
-              height={300}
-              exchange="BINANCE"
-              currency="BTC"
-            />
-          </div>
-          <div className="col-6">
-            <Chart
-              width={600}
-              height={300}
-              exchange="BINANCE"
-              currency="ETH"
-            />
-          </div>
-        </div>
         <Header>About Coinget</Header>
         <AboutSection/>
         <Header>Gallery</Header>
