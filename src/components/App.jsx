@@ -12,11 +12,6 @@ import {connect} from "react-redux";
 import ConnectWebSocket from "Components/ConnectWebSocket";
 import SubscribeOnCoins from "Components/SubscribeOnCoins";
 import Slider from "Components/Slider";
-import Chart from "Components/Chart";
-
-
-
-import WebSocketApi from "Utils/webSocketApi";
 
 // TODO google fb login
 // reference: https://medium.com/@rocksinghajay/login-with-facebook-and-google-in-reactjs-990d818d5dab
@@ -24,8 +19,6 @@ import WebSocketApi from "Utils/webSocketApi";
 class App extends Component {
   constructor(props) {
     super(props);
-    const WSLink = 'wss://backend-land.coinget.io/v3/public/ws';
-    WebSocketApi.connect(WSLink);
   }
   componentDidMount() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
