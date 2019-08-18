@@ -3,9 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import BasicButton from "Components/BasicButton";
 import "Style/LoginFormPopUp";
 import Restore from "Assets/symbol-restore.png";
-import Cross from "Assets/icons8-delete-40.png";
 import validateInput from "Utils/inputValidate";
-import {authRequest, profileRedirect} from "Utils/api";
+import {authRequest, dashboardRedirect} from "Utils/api";
 import FacebookLogin from 'react-facebook-login';
 import SocialAuthGoogle from "Components/SocialAuthGoogle";
 import SocialAuthFB from "Components/SocialAuthFB";
@@ -58,7 +57,7 @@ class LoginFormPopUp extends Component {
       headerName: "Login",
       footerContent: this._renderSignInFooter(),
       submitBtnName: "Sign in",
-      api: "/auth/login"
+      api: "/login"
     },
     "register": {
       headerName: "Create an Account",
@@ -86,12 +85,26 @@ class LoginFormPopUp extends Component {
     }
     if (formMode === "register") {
       data.append('name', name.value);
-      data.append('password_confirmation', password.value);
       data.append('locale', navigator.language);
     }
     authRequest(data, path)
-      .then((res) => (
-        formMode === "restore" ? this.onSuccessfulRestore(res) : profileRedirect(res.data.access_token))
+      .then((res) => {
+          console.log("Auth response", res);
+          if (res.data.result) {
+            formMode === "restore"
+              ? this.onSuccessfulRestore(res)
+              : dashboardRedirect(res.data.token.access_token);
+          } else {
+            console.log("ERROR", res.data.error);
+            let err = "Unknown Error";
+            if (typeof res.data.error === "object") {
+              err = res.data.error.email.join(' ');
+            } else if (typeof res.data.error === "string") {
+              err = res.data.error;
+            }
+            this.setState({errorMsg: err});
+          }
+        }
       )
       .catch(error => {
         const err = error.toString();
@@ -102,9 +115,9 @@ class LoginFormPopUp extends Component {
       });
   };
 
-  onSuccessfulRestore = (res) => {
-    if (res.status === 200) {
-      this.setState({formMode: "sign in", successMsg: res.data.message});
+  onSuccessfulRestore = ({status, data}) => {
+    if (status === 200) {
+      this.setState({formMode: "sign in", successMsg: data.message});
       setTimeout(() => {
         this.setState({successMsg: ""})
       }, 4000);
@@ -150,8 +163,8 @@ class LoginFormPopUp extends Component {
         </Modal.Header>
         <Modal.Body className="login-body">
           <div className="login-social-auth">
-            <SocialAuthGoogle />
-            <SocialAuthFB />
+            <SocialAuthGoogle/>
+            <SocialAuthFB/>
           </div>
           <div className="or-line">
             <span>or</span>

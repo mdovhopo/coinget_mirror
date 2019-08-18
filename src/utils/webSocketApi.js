@@ -1,5 +1,3 @@
-import {subscribeOnNotification} from "Utils/WebSocketConnect";
-
 const makeSubscribeRequest = (exchangeID, tradeCurrency, id) => (
   {
     "jsonrpc": "2.0",

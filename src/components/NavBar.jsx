@@ -5,8 +5,9 @@ import {Button} from "react-bootstrap";
 import BasicButton from "Components/BasicButton";
 import "Style/NavBar";
 import LoginFormPopUp from "Components/LoginFormPopUp";
-import {getProfile} from "Utils/api";
+import {getMyUser} from "Utils/api";
 import EventEmitter from "Utils/EventEmitter";
+import {DASHBOARD_URL} from "Constants/index";
 
 
 class NavBar extends Component {
@@ -24,22 +25,18 @@ class NavBar extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     console.log(token ? "Auth token exist!" : "No auth token");
-    // Remove token anyway.
-    // TODO if token valid and use it for login.
-    localStorage.removeItem("token");
-
-    // getProfile(token)
-    //   .then(res => {
-    //     if (res.status === 200) {
-    //       console.log("Auth token valid! Set login button to profile");
-    //       this.setState({authorized: true, locationURL: res.config.url});
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     // console.log(err);
-    //     console.log("Auth token is not valid! removing...");
-    //     localStorage.removeItem("token")
-    //   });
+    if (!token) return ;
+    getMyUser(token)
+      .then(res => {
+        console.log("Auth token valid!", res);
+        console.log("Setting login button to profile");
+        this.setState({authorized: true, locationURL: DASHBOARD_URL});
+    })
+      .catch(err => {
+        console.log("Auth token not valid", err.toString());
+        console.log("Removing token... ");
+        localStorage.removeItem("token");
+      });
   }
 
   handleLoginForm = () => {
