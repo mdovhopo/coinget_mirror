@@ -9,9 +9,8 @@ import SupportedExchanges from "Components/SupportedExchanges";
 import Footer from "Components/Footer";
 import SubscribeForm from "Components/SubscribeForm";
 import {connect} from "react-redux";
-import ConnectWebSocket from "Components/ConnectWebSocket";
-import SubscribeOnCoins from "Components/SubscribeOnCoins";
 import Slider from "Components/Slider";
+import {getExchanges} from "Utils/api";
 
 // TODO google fb login
 // reference: https://medium.com/@rocksinghajay/login-with-facebook-and-google-in-reactjs-990d818d5dab
@@ -20,22 +19,23 @@ class App extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
 
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
+  componentDidMount() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
       });
     });
-  });
-}
+    getExchanges(this.props.dispatch);
+  }
+
   render() {
     return (
       <>
-        <ConnectWebSocket />
-        <SubscribeOnCoins />
         <NavBar/>
         <TryItNowSection/>
         <CourseSection/>
