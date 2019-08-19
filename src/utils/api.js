@@ -1,5 +1,7 @@
 import axios from "axios";
 import {DASHBOARD_URL} from "Constants/index";
+import URLRedirect from "Utils/URLRedirect";
+import {setCookie} from "Utils/cookie";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api/price/rate";
 const CoinGetBaseLink = "http://api.coinget.io";
@@ -8,13 +10,6 @@ const proxy = "https://cors-anywhere.herokuapp.com/";
 
 export const getCourse = (currentExchange, currentCurrency, currentDate) => {
   return axios.get(proxy + backendAPI, {
-    // headers: {
-    //   'access-control-allow-origin': 'backend.coinget.io',
-    //   'access-control-allow-methods': 'GET',
-    //   'access-control-allow-headers': 'access-control-allow-origin',
-    //   'access-control-expose-headers':
-    //     'access-control-allow-origin,access-control-allow-methods,access-control-allow-headers'
-    // },
     params: {
       marketCurrency: "USD",
       exchangeId: currentExchange,
@@ -25,8 +20,7 @@ export const getCourse = (currentExchange, currentCurrency, currentDate) => {
 };
 
 export const getMyUser = (token) => {
-  console.log('Bearer ' + token);
-  return axios.post(CoinGetBaseLink + "/api/v1/me", {
+  return axios.post(CoinGetBaseLink + "/api/v1/me", {}, {
     headers: {
       'Authorization': 'Bearer ' + token
     }
@@ -34,11 +28,13 @@ export const getMyUser = (token) => {
 };
 
 export const authRequest = (data, apiPath) => {
-  console.log(`API Request ${CoinGetAuthLink + apiPath}`, data);
   return axios.post(CoinGetAuthLink + apiPath, data);
 };
 
 export const dashboardRedirect = (token) => {
   localStorage.setItem('access_token', token);
-  window.location.href = DASHBOARD_URL;
+  setCookie("access_token", token, 30);
+  setCookie("domain", ".coinget.io", 30);
+  setCookie("path", "/", 30);
+  URLRedirect(DASHBOARD_URL);
 };

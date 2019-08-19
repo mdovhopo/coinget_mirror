@@ -7,7 +7,10 @@ import "Style/NavBar";
 import LoginFormPopUp from "Components/LoginFormPopUp";
 import {getMyUser} from "Utils/api";
 import EventEmitter from "Utils/EventEmitter";
-import {DASHBOARD_URL} from "Constants/index";
+import {CONTENT_LOADED, CONTENT_LOADING_ERROR, CONTENT_LOADING_IN_PROGRESS, DASHBOARD_URL} from "Constants/index";
+import URLRedirect from "Utils/URLRedirect";
+import {ClipLoader} from "react-spinners";
+import {deleteCookie} from "Utils/cookie";
 
 
 class NavBar extends Component {
@@ -16,7 +19,7 @@ class NavBar extends Component {
     this.state = {
       openMobileMenu: false,
       openLoginMenu: false,
-      authorized: false,
+      authorized: CONTENT_LOADING_IN_PROGRESS,
       locationURL: ""
     };
     EventEmitter.subscribe("openLoginForm", this.handleLoginForm);
@@ -24,18 +27,13 @@ class NavBar extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("access_token");
-    console.log(token ? "Auth token exist!" : "No auth token");
-    if (!token) return ;
+    if (!token) return this.setState({authorized: CONTENT_LOADING_ERROR});
     getMyUser(token)
-      .then(res => {
-        console.log("Auth token valid!", res);
-        console.log("Setting login button to profile");
-        this.setState({authorized: true, locationURL: DASHBOARD_URL});
+      .then(_ => {
+        this.setState({authorized: CONTENT_LOADED, locationURL: DASHBOARD_URL});
     })
-      .catch(err => {
-        console.log("Auth token not valid", err.toString());
-        console.log("Removing token... ");
-        // localStorage.removeItem("access_token");
+      .catch(_ => {
+        this.setState({authorized: CONTENT_LOADING_ERROR})
       });
   }
 
@@ -53,22 +51,25 @@ class NavBar extends Component {
     </div>
   );
 
-  handleRedirect = () => {
-    window.location = this.state.locationURL;
-  };
-
-  _renderLoginButton = () => (
-    <li className="menu-item p-2">
+  _renderLoginButton = () => {
+    const {authorized} = this.state;
+    let buttonCallback = () => {};
+    let buttonName = <ClipLoader size={15} loading={true} color={'#cca210'}/>;
+    if (authorized === CONTENT_LOADED) {
+      buttonName = "Profile";
+      buttonCallback = () => URLRedirect(DASHBOARD_URL);
+    } else if (authorized === CONTENT_LOADING_ERROR) {
+      buttonName = "Login";
+      buttonCallback = this.handleLoginForm;
+    }
+    return (<li className="menu-item p-2">
       <a className="menu-link">
-        <BasicButton onClick={this.state.authorized ?
-          this.handleRedirect :
-          this.handleLoginForm
-        }>
-          {this.state.authorized ? "Profile" : "Login"}
+        <BasicButton minWidth={100} onClick={buttonCallback}>
+          {buttonName}
         </BasicButton>
       </a>
-    </li>
-  );
+    </li>);
+  };
 
   _renderMenuItems = (size) => (
     <ul className={"navbar-nav menu"} id="example-collapse-text">
