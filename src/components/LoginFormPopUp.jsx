@@ -111,7 +111,7 @@ class LoginFormPopUp extends Component {
         if (err.indexOf("401") > -1) this.setState({errorMsg: "Wrong password or e-mail"});
         else if (err.indexOf("422") > -1) this.setState({errorMsg: "User exists"});
         else if (err.indexOf("400") > -1) this.setState({errorMsg: "No such user"});
-        else this.setState({errorMsg: "Unknown Error"})
+        else this.setState({errorMsg: error.toString()})
       });
   };
 
