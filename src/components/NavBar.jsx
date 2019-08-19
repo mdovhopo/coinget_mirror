@@ -10,6 +10,7 @@ import EventEmitter from "Utils/EventEmitter";
 import {CONTENT_LOADED, CONTENT_LOADING_ERROR, CONTENT_LOADING_IN_PROGRESS, DASHBOARD_URL} from "Constants/index";
 import URLRedirect from "Utils/URLRedirect";
 import {ClipLoader} from "react-spinners";
+import {deleteCookie} from "Utils/cookie";
 
 
 class NavBar extends Component {
@@ -32,7 +33,6 @@ class NavBar extends Component {
         this.setState({authorized: CONTENT_LOADED, locationURL: DASHBOARD_URL});
     })
       .catch(_ => {
-        localStorage.removeItem("access_token");
         this.setState({authorized: CONTENT_LOADING_ERROR})
       });
   }

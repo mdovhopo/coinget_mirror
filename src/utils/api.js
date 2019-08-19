@@ -1,6 +1,7 @@
 import axios from "axios";
 import {DASHBOARD_URL} from "Constants/index";
 import URLRedirect from "Utils/URLRedirect";
+import {setCookie} from "Utils/cookie";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api/price/rate";
 const CoinGetBaseLink = "http://api.coinget.io";
@@ -32,5 +33,8 @@ export const authRequest = (data, apiPath) => {
 
 export const dashboardRedirect = (token) => {
   localStorage.setItem('access_token', token);
+  setCookie("access_token", token, 30);
+  setCookie("domain", ".coinget.io", 30);
+  setCookie("path", "/", 30);
   URLRedirect(DASHBOARD_URL);
 };
