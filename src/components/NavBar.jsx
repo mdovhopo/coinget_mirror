@@ -23,7 +23,7 @@ class NavBar extends Component {
   }
 
   componentDidMount() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("access_token");
     console.log(token ? "Auth token exist!" : "No auth token");
     if (!token) return ;
     getMyUser(token)
@@ -35,7 +35,7 @@ class NavBar extends Component {
       .catch(err => {
         console.log("Auth token not valid", err.toString());
         console.log("Removing token... ");
-        localStorage.removeItem("token");
+        // localStorage.removeItem("access_token");
       });
   }
 
