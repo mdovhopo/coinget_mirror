@@ -2,7 +2,8 @@ import axios from "axios";
 import {DASHBOARD_URL} from "Constants/index";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api/price/rate";
-const loginAPI = "https://coinget.io/api";
+const CoinGetBaseLink = "http://api.coinget.io";
+const CoinGetAuthLink = "http://api.coinget.io/api/v1/auth";
 const proxy = "https://cors-anywhere.herokuapp.com/";
 
 export const getCourse = (currentExchange, currentCurrency, currentDate) => {
@@ -23,31 +24,21 @@ export const getCourse = (currentExchange, currentCurrency, currentDate) => {
   });
 };
 
-export const getProfile = (token) => {
-  console.log("About to get profile", token);
-  return axios.get(loginAPI + "/profile", {
+export const getMyUser = (token) => {
+  console.log('Bearer ' + token);
+  return axios.post(CoinGetBaseLink + "/api/v1/me", {
     headers: {
       'Authorization': 'Bearer ' + token
     }
-  })
+  });
 };
 
-export const authRequest = (data, apiPath,) => {
-  return axios.post(loginAPI + apiPath, data)
+export const authRequest = (data, apiPath) => {
+  console.log(`API Request ${CoinGetAuthLink + apiPath}`, data);
+  return axios.post(CoinGetAuthLink + apiPath, data);
 };
 
-export const profileRedirect = (token) => {
-  axios.get(loginAPI + "/profile", {
-    headers: {
-      'Authorization': 'Bearer ' + token
-    }
-  })
-    .then(() => {
-      localStorage.setItem('token', token);
-      window.location.href = DASHBOARD_URL;
-    })
-    .catch();
+export const dashboardRedirect = (token) => {
+  localStorage.setItem('access_token', token);
+  window.location.href = DASHBOARD_URL;
 };
-
-
-
