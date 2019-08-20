@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
-import LogoCopyDesktop from "Assets/logo-copy.png";
-import LogoCopyMobile from "Assets/logo.png";
-import {Button} from "react-bootstrap";
-import BasicButton from "Components/BasicButton";
+import LogoCopyDesktop    from "Assets/logo-copy.png";
+import LogoCopyMobile     from "Assets/logo.png";
+import {Button}           from "react-bootstrap";
+import BasicButton        from "Components/BasicButton";
 import "Style/NavBar";
-import LoginFormPopUp from "Components/LoginFormPopUp";
-import {getMyUser} from "Utils/ApiMap";
-import EventEmitter from "Utils/EventEmitter";
+import LoginFormPopUp     from "Components/LoginFormPopUp";
+import {getMyUser}        from "Utils/ApiMap";
+import EventEmitter       from "Utils/EventEmitter";
 import {
     CONTENT_LOADED,
     CONTENT_LOADING_ERROR,
     CONTENT_LOADING_IN_PROGRESS,
     DASHBOARD_URL
-} from "Constants/constants";
-import {URLRedirect} from "Utils/Utils";
-import {ClipLoader} from "react-spinners";
+}                         from "Constants/constants";
+import {URLRedirect}      from "Utils/Utils";
+import {ClipLoader}       from "react-spinners";
 
 type Props = {}
 type State = {

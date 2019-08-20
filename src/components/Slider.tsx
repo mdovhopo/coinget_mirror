@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import "Style/Slider";
-import LeftArrow from "Assets/arow-g-left.png";
-import RightArrow from "Assets/arow-g-rigth.png";
-import Layer409 from "Assets/layer-409.png";
-import Layer410 from "Assets/layer-410.png";
-import Layer407 from "Assets/layer-410.png";
-import PhotoModal from "Components/PhotoModal";
+import LeftArrow          from "Assets/arow-g-left.png";
+import RightArrow         from "Assets/arow-g-rigth.png";
+import Layer409           from "Assets/layer-409.png";
+import Layer410           from "Assets/layer-410.png";
+import Layer407           from "Assets/layer-410.png";
+import PhotoModal         from "Components/PhotoModal";
 
 type Props = {}
 type State = {
@@ -25,7 +25,7 @@ const getInitialState = (): State => ({
 });
 
 class Slider extends Component<Props, State> {
-  state = getInitialState();
+    state = getInitialState();
 
     componentDidMount() {
         this.updateWindowDimensions();

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import "Style/CourseSection";
-import {ClipLoader} from 'react-spinners';
-import WebSocketApi from 'Utils/WebSocketApi';
+import {ClipLoader}       from 'react-spinners';
+import WebSocketApi       from 'Utils/WebSocketApi';
 
 type Props = {
     coin: string,
@@ -13,8 +13,8 @@ type State = {
 };
 
 type PriceData = {
-  date: string,
-  price: string
+    date: string,
+    price: string
 }
 
 class CourseItem extends Component<Props, State> {
@@ -23,10 +23,10 @@ class CourseItem extends Component<Props, State> {
     componentDidMount(): void {
         const {coin, exchange} = this.props;
         const callback = (data: PriceData) => {
-          const price:number = +data.price;
-          const oldPrice: number = this.state.price;
-          const prevPrice: number = oldPrice === 0 ? price : oldPrice;
-          this.setState({price, prevPrice});
+            const price: number = +data.price;
+            const oldPrice: number = this.state.price;
+            const prevPrice: number = oldPrice === 0 ? price : oldPrice;
+            this.setState({price, prevPrice});
         };
         WebSocketApi.subscribe(exchange, coin, callback);
     }

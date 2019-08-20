@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import "Style/CourseSection";
-import CourseItem from "Components/CourseItem";
-import {connect} from "react-redux";
-import {isEmpty} from "Utils/Utils";
-import {css} from '@emotion/core';
-import {PropagateLoader} from 'react-spinners';
-import WebSocketApi from "Utils/WebSocketApi";
+import CourseItem         from "Components/CourseItem";
+import {connect}          from "react-redux";
+import {isEmpty}          from "Utils/Utils";
+import {css}              from '@emotion/core';
+import {PropagateLoader}  from 'react-spinners';
+import WebSocketApi       from "Utils/WebSocketApi";
 
 type Props = {
     exchanges: Array<any>

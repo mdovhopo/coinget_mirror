@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
-import NavBar from "Components/NavBar";
-import TryItNowSection from "Components/TryItNowSection";
-import CourseSection from "Components/CourseSection";
-import Header from "Components/Header";
-import AboutSection from "Components/AboutSection";
-import Pricing from "Components/Pricing";
+import NavBar             from "Components/NavBar";
+import TryItNowSection    from "Components/TryItNowSection";
+import CourseSection      from "Components/CourseSection";
+import Header             from "Components/Header";
+import AboutSection       from "Components/AboutSection";
+import Pricing            from "Components/Pricing";
 import SupportedExchanges from "Components/SupportedExchanges";
-import Footer from "Components/Footer";
-import SubscribeForm from "Components/SubscribeForm";
-import {connect} from "react-redux";
-import Slider from "Components/Slider";
-import {getExchanges} from "Utils/ApiMap";
+import Footer             from "Components/Footer";
+import SubscribeForm      from "Components/SubscribeForm";
+import {connect}          from "react-redux";
+import Slider             from "Components/Slider";
+import {getExchanges}     from "Utils/ApiMap";
 
 // TODO google fb login
 // reference: https://medium.com/@rocksinghajay/login-with-facebook-and-google-in-reactjs-990d818d5dab

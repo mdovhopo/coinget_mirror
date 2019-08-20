@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import "Style/AboutSection";
-import Sign from "Assets/sign.png";
-import SignAnalytics from "Assets/sign-analytics.png";
-import SignExch from "Assets/sign-exch.png";
-import HoneyComb from "Assets/honeycomb-centre.png";
-import SignApp from "Assets/sign-app.png";
-import SignApp2 from "Assets/sign-app-2.png";
-import OneSec from "Assets/1-sec.png";
+import Sign               from "Assets/sign.png";
+import SignAnalytics      from "Assets/sign-analytics.png";
+import SignExch           from "Assets/sign-exch.png";
+import HoneyComb          from "Assets/honeycomb-centre.png";
+import SignApp            from "Assets/sign-app.png";
+import SignApp2           from "Assets/sign-app-2.png";
+import OneSec             from "Assets/1-sec.png";
 import {isElementVisible} from "Utils/Utils";
-import AboutItemModal from "Components/AboutItemModal";
+import AboutItemModal     from "Components/AboutItemModal";
 
 type Props = {}
 type State = {

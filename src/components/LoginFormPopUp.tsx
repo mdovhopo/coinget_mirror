@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import Modal from "react-bootstrap/Modal";
-import BasicButton from "Components/BasicButton";
+import React, {Component}               from 'react';
+import Modal                            from "react-bootstrap/Modal";
+import BasicButton                      from "Components/BasicButton";
 import "Style/LoginFormPopUp";
-import Restore from "Assets/symbol-restore.png";
-import validateInput from "Utils/InputValidate";
+import Restore                          from "Assets/symbol-restore.png";
+import validateInput                    from "Utils/InputValidate";
 import {authRequest, dashboardRedirect} from "Utils/ApiMap";
-import FacebookLogin from 'react-facebook-login';
-import SocialAuthGoogle from "Components/SocialAuthGoogle";
-import SocialAuthFB from "Components/SocialAuthFB";
-import {AxiosResponse} from "axios";
-import GetCoursePopUp from "Components/GetCoursePopUp";
+import FacebookLogin                    from 'react-facebook-login';
+import SocialAuthGoogle                 from "Components/SocialAuthGoogle";
+import SocialAuthFB                     from "Components/SocialAuthFB";
+import {AxiosResponse}                  from "axios";
+import GetCoursePopUp                   from "Components/GetCoursePopUp";
 
 type InputValueState = {
     value: string,
