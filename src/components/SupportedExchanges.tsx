@@ -11,7 +11,7 @@ import Arrow from "Assets/arrow-1.png";
 class SupportedExchanges extends Component {
   render() {
     return (
-      <div name="contact" id="contact" className="exchanges-container exported-exchanges">
+      <div id="contact" className="exchanges-container exported-exchanges">
         <div className="exchanges-wrap">
           <div className="lines">
             <div className="line">

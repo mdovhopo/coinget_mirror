@@ -16,12 +16,24 @@ import Sphere3 from "Assets/sphere-1.png";
 import Background from "Assets/background.png";
 import {connect} from "react-redux";
 import GetCoursePopUp from "Components/GetCoursePopUp";
-import {getCourse} from "Utils/api";
+import {getCourse} from "Utils/ApiMap";
 import EventEmitter from "Utils/EventEmitter";
 import ParallaxItem from "Components/ParallaxItem";
 import {MoonLoader} from "react-spinners";
 import {css} from "@emotion/core";
-import {CONTENT_LOADING_ERROR, CONTENT_LOADING_IN_PROGRESS, CONTENT_SETTINGS_NOT_COMPLETE} from "Constants/index";
+import {CONTENT_LOADING_ERROR, CONTENT_LOADING_IN_PROGRESS, CONTENT_SETTINGS_NOT_COMPLETE} from "Constants/constants";
+
+
+type State = {
+  showGetCourse: boolean,
+  currentExchange: string,
+  currentCurrency: string,
+  currentDate: Date | number,
+  currentCourse: string
+};
+type Props = {
+  exchanges: ReduxExchanges
+};
 
 const parallaxShapesParams = [
   {className: "parallax-shape-left sphere-1", startOffset: 250, speed: 0.6, src: Sphere1},
@@ -39,28 +51,26 @@ const override = css`
     justify-content: center;
 `;
 
-class TryItNowSection extends Component {
+const getInitialState = (): State => ({
+  showGetCourse: false,
+  currentExchange: "",
+  currentCurrency: "",
+  currentDate: 0,
+  currentCourse: CONTENT_SETTINGS_NOT_COMPLETE
+});
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      showGetCourse: false,
-      currentExchange: "",
-      currentCurrency: "",
-      currentDate: 0,
-      currentCourse: CONTENT_SETTINGS_NOT_COMPLETE
-    }
-  }
+class TryItNowSection extends Component<Props, State> {
+  state = getInitialState();
 
-  setCurrentDate = (date) => {
+  setCurrentDate = (date: Date | number) => {
     this.setState({currentDate: date});
   };
 
-  setCurrentExchange = (exchange) => {
+  setCurrentExchange = (exchange: string) => {
     this.setState({currentExchange: exchange});
   };
 
-  setCurrentCurrency = (currency) => {
+  setCurrentCurrency = (currency: string) => {
     this.setState({currentCurrency: currency});
   };
 
@@ -74,7 +84,7 @@ class TryItNowSection extends Component {
       .catch(() => this.setState({showGetCourse: true, currentCourse: CONTENT_LOADING_ERROR}));
   };
 
-  closeGetCourse = (e) => {
+  closeGetCourse = () => {
     this.setState({showGetCourse: false});
     setTimeout(
       () => this.setState({currentCourse: CONTENT_SETTINGS_NOT_COMPLETE}),
@@ -83,6 +93,7 @@ class TryItNowSection extends Component {
 
 
   render() {
+    console.log(this.props.exchanges[this.state.currentExchange]);
     return (
       <div className="try-it-now-section align-center">
         <ParallaxItem
@@ -99,7 +110,7 @@ class TryItNowSection extends Component {
               <ParallaxItem
                 key={index}
                 outerClass={shape.className}
-                innnerClass=""
+                innerClass=""
                 image={shape.src}
                 startOffset={shape.startOffset}
                 speed={shape.speed}
@@ -108,7 +119,7 @@ class TryItNowSection extends Component {
           }
         )}
         <div className="try-it-now-inner-section"
-             onClick={(e) => {
+             onClick={(e: any) => {
                if (e._dispatchInstances.length === undefined)
                 EventEmitter.dispatch("closeSvgBtnDropdown")
              }}
@@ -181,7 +192,7 @@ class TryItNowSection extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: ReduxState) => ({
   exchanges: state.rootReducer.exchanges
 });
 

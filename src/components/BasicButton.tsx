@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 import "Style/BasicButton.scss";
 
-class BasicButton extends Component {
+type Props = {
+  maxWidth?: number | string
+  minWidth?: number | string
+  className?: string
+  onClick: () => void
+}
+
+class BasicButton extends Component<Props> {
   render() {
     const style = {
       maxWidth: this.props.maxWidth,

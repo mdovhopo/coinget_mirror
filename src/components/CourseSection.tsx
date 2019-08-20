@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import "Style/CourseSection";
 import CourseItem from "Components/CourseItem";
 import {connect} from "react-redux";
-import {isEmpty} from "Utils/utils";
+import {isEmpty} from "Utils/Utils";
 import {css} from '@emotion/core';
 import {PropagateLoader} from 'react-spinners';
 import WebSocketApi from "Utils/WebSocketApi";

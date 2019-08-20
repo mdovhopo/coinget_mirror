@@ -12,14 +12,14 @@
     "typeRoots" : ["./src/typings"],
     "baseUrl": "./",
     "paths": {
-      "Src":        ["./src"],
-      "Components": ["./src/components"],
-      "Assets":     ["./src/assets"],
-      "Style":      ["./src/style"],
-      "react":      ["./node_modules/react"],
-      "Redux":      ["./src/redux"],
-      "Utils":      ["./src/utils"],
-      "Constants":  ["./src/constants"]
+      "Srс/*":        ["./src/*"],
+      "Components/*": ["./src/components/*"],
+      "Assets/*":     ["./src/assets/*"],
+      "Style/*":      ["./src/style/*"],
+      "react/*":      ["./node_modules/react/*"],
+      "Redux/*":      ["./src/redux/*"],
+      "Utils/*":      ["./src/utils/*"],
+      "Constants/*":  ["./src/constants/*"]
     }
   },
   "exclude": [

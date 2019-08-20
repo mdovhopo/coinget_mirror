@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import "Style/SocialAuth";
 import Facebook from "Assets/facebook.png";
-import {FB_API_KEY} from "Constants/index";
+import {FB_API_KEY} from "Constants/constants";
 import FacebookLogin from "react-facebook-login";
 
 class SocialAuthFB extends Component {
+  fblogin: any;
+
   render() {
-    const componentClicked = (event) => {
+    const componentClicked = (event: any) => {
       console.log("Click:", event);
     };
 
-    const responseFacebook = (response) => {
+    const responseFacebook = (response: any) => {
       if (response.error !== undefined) {
         console.log("Error", response);
         return;

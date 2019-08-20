@@ -7,28 +7,46 @@ import DateFnsUtils from "@date-io/date-fns"; // choose your lib
 import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import {createMuiTheme} from '@material-ui/core'
-import {MS_PER_MINUTE} from "Constants/index";
+import {MS_PER_MINUTE} from "Constants/constants";
 import EventEmitter from "Utils/EventEmitter";
 
+type State = {
+  active: boolean,
+  activeText: string,
+  selectedDate: string
+}
+type Props = {
+  datepicker?: boolean,
+  zIndex: number,
+  onItemClick: Function,
+  loadingContent?: any,
+  icon?: string,
+  width: string | number,
+  style: string,
+  content?: Array<string>
+}
 
 const DateTimePickerTheme = createMuiTheme({
   palette: {
     primary: {
       main: '#000',
-      color: "#cca210",
       contrastText: "#cca210"
     }
   }
 });
 
-class DropDownSVG extends Component {
-  constructor(props) {
+const getInitialState = (): State => ({
+    active: false,
+    activeText: "",
+    selectedDate: ""
+});
+
+class DropDownSVG extends Component<Props, State> {
+
+  state = getInitialState();
+
+  constructor(props: Props) {
     super(props);
-    this.state = {
-      active: false,
-      activeText: "",
-      selectedDate: ""
-    };
     EventEmitter.subscribe("closeSvgBtnDropdown",
       () => {
         if (this.state.active === true)
@@ -67,21 +85,21 @@ class DropDownSVG extends Component {
       }
       return (
         <ul className={"svg-dropdown " + active}>
-          {content.map((item, index) => (
+          {content.map((item: string, index: number) => (
             <li key={index} onClick={() => this.handleSelectOption(item)}>{item}</li>
           ))}
         </ul>
       );
     }
   };
-  handleDateChange = (_date) => {
+  handleDateChange = (_date: Date) => {
     this.setState({activeText: _date.toDateString(), active: false, selectedDate: _date.toString()});
     // convert date to server time GMT+000
     let date = new Date(_date.getTime() + _date.getTimezoneOffset() * MS_PER_MINUTE);
     const custom = moment(date).format("YYYYMMDDHHmmss");
     this.props.onItemClick(custom);
   };
-  handleSelectOption = (text) => {
+  handleSelectOption = (text: string) => {
     this.setState({activeText: text});
     this.props.onItemClick(text);
   };
@@ -94,7 +112,6 @@ class DropDownSVG extends Component {
   render() {
     const height = 60;
     const {width} = this.props;
-    // const activeSuffix = this.state.active ? " active" : "";
     return (
       <div className={"get-course-item"}>
         <div className={"get-course-icon-wrap"}>

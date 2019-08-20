@@ -5,7 +5,7 @@ import "Style/SubscribeForm";
 class SubscribeForm extends Component {
   render() {
     return (
-      <div name="subscribe" id="subscribe"  className="subscribe-section">
+      <div id="subscribe"  className="subscribe-section">
         <div className="wrap">
           <form className="subscribe-form">
             <div className="form-name">
@@ -14,7 +14,10 @@ class SubscribeForm extends Component {
             <input className="form-input" type="text" placeholder="Your name" name="name" />
               <input className="form-input" type="email" placeholder="Your email" name="mail" />
                 <div className="align-center">
-                  <BasicButton maxWidth="300px">
+                  <BasicButton
+                      maxWidth="300px"
+                    onClick={() => console.log("Subscribe btn")}
+                  >
                     Subscribe
                   </BasicButton>
                 </div>

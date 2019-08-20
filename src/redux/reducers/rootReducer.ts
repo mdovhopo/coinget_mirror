@@ -1,13 +1,12 @@
-import * as actionTypes from '../actions/actionTypes';
+import { ADD_EXCHANGE} from 'Redux/actions/actionTypes';
 
-const _state = {
+const INIT_STATE = {
   exchanges: {},
-  openLoginForm: false
 };
 
-const rootReducer = (state = _state, action) => {
+const rootReducer = (state = INIT_STATE, action: ReduxAction) => {
   switch (action.type) {
-    case actionTypes.ADD_EXCHANGE: {
+    case ADD_EXCHANGE: {
       let key = Object.keys(action.payload)[0];
       return {
         ...state,

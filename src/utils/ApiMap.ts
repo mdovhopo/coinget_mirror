@@ -1,15 +1,15 @@
 import axios from "axios";
-import {DASHBOARD_URL} from "Constants/index";
-import URLRedirect from "Utils/URLRedirect";
+import {DASHBOARD_URL} from "Constants/constants";
+import {URLRedirect} from "Utils/Utils";
 import {setCookie} from "Utils/cookie";
-import {addExchangeWrap} from "Redux/actions/actionWrappers";
+import {addExchangeDispatch} from "Redux/actions/actionWrappers";
 
 const backendAPI = "https://backend-land.coinget.io/v3/public/api";
 const CoinGetBaseLink = "http://api.coinget.io";
 const CoinGetAuthLink = "http://api.coinget.io/api/v1/auth";
 const proxy = "https://cors-anywhere.herokuapp.com/";
 
-export const getCourse = (currentExchange, currentCurrency, currentDate) => {
+export const getCourse = (currentExchange: string, currentCurrency: string, currentDate: string) => {
   return axios.get(proxy + backendAPI + "/price/rate", {
     params: {
       marketCurrency: "USD",
@@ -20,7 +20,7 @@ export const getCourse = (currentExchange, currentCurrency, currentDate) => {
   });
 };
 
-export const getMyUser = (token) => {
+export const getMyUser = (token: string) => {
   return axios.post(CoinGetBaseLink + "/api/v1/me", {}, {
     headers: {
       'Authorization': 'Bearer ' + token
@@ -28,11 +28,11 @@ export const getMyUser = (token) => {
   });
 };
 
-export const authRequest = (data, apiPath) => {
+export const authRequest = (data: FormData, apiPath: string) => {
   return axios.post(CoinGetAuthLink + apiPath, data);
 };
 
-export const dashboardRedirect = (token) => {
+export const dashboardRedirect = (token: string) => {
   localStorage.setItem('access_token', token);
   setCookie("access_token", token, 30);
   setCookie("domain", ".coinget.io", 30);
@@ -40,7 +40,7 @@ export const dashboardRedirect = (token) => {
   URLRedirect(DASHBOARD_URL);
 };
 
-export const getExchanges = (dispatch) => {
+export const getExchanges = (dispatch: Function) => {
   axios.get(proxy + backendAPI + "/info/exchanges", {
   })
     .then(response => {
@@ -61,7 +61,7 @@ export const getExchanges = (dispatch) => {
             // currency request emulation, TODO: change setTimeout to API request when backend will be ready
             setTimeout(() => {
               const currencies = ["ETH", "BTC"];
-              dispatch(addExchangeWrap({[exchange]: currencies}));
+              dispatch(addExchangeDispatch({[exchange]: currencies}));
             }, Math.random() * 500);
           }
         }

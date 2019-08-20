@@ -1,7 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, ReactNode} from 'react';
 import "Style/Header";
 
-class Header extends Component {
+type Props = {
+    children: ReactNode
+}
+
+class Header extends Component<Props> {
   render() {
     return (
       <div className="header-container">

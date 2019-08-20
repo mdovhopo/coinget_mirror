@@ -2,7 +2,13 @@ import React, {Component} from 'react';
 import {Modal} from "react-bootstrap";
 import "Style/PhotoModal";
 
-class PhotoModal extends Component {
+type Props = {
+  photo: string,
+  onClose: () => void,
+  show: boolean
+}
+
+class PhotoModal extends Component<Props> {
   render() {
     const {photo, onClose, show} = this.props;
     return (

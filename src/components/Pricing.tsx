@@ -4,21 +4,20 @@ import BasicButton from "Components/BasicButton";
 import HoneyComb10 from "Assets/honeycomb-10.png"
 import HoneyComb99 from "Assets/honeycomb-99.png"
 import HoneyCombFree from "Assets/honeycomb-free.png";
-import {connect} from "react-redux";
 import EventEmitter from "Utils/EventEmitter";
 import Arrow from "Assets/arrow-2.png";
 
 
 class Pricing extends Component {
   COLLAPSE_ELEMENTS_AMOUNT = 2;
-  collapseElements = [];
+  collapseElements: Array<HTMLElement> = [];
 
   state = {
     collapsed: true
   };
 
   componentDidMount() {
-    const resizeCallback = (...args) => {
+    const resizeCallback = () => {
       const height = innerWidth > 1149 ? "auto" : "0px";
       for (const element of this.collapseElements) {
         element.style.height = height;
@@ -30,7 +29,7 @@ class Pricing extends Component {
     window.addEventListener("resize", resizeCallback);
   }
 
-  collapseSection = (element) => {
+  collapseSection = (element: HTMLElement) => {
     const sectionHeight = element.scrollHeight;
     const elementTransition = element.style.transition;
     element.style.transition = '';
@@ -43,10 +42,10 @@ class Pricing extends Component {
     });
   };
 
-  expandSection = (element) => {
+  expandSection = (element: HTMLElement) => {
     const sectionHeight = element.scrollHeight;
     element.style.height = sectionHeight + 'px';
-    const transitionCallback = e => {
+    const transitionCallback = () => {
       element.removeEventListener('transitionend', transitionCallback);
       element.style.height = null;
     };
@@ -70,7 +69,7 @@ class Pricing extends Component {
     const expandBtnText = collapsed ? "More" : "Less";
     const expandBtnIconStyle = collapsed ? {} : {transform: "rotate(180deg) translateY(3px)"};
     return (
-      <div name="price" id="price" className="pricing-container">
+      <div id="price" className="pricing-container">
         <div className="prising-wrap">
           <div className="price-item little-item" ref={(el) => {
             if (this.collapseElements.length < this.COLLAPSE_ELEMENTS_AMOUNT)

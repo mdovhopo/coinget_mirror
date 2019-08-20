@@ -1,4 +1,4 @@
-export const isEmpty = (obj) => {
+export const isEmpty = (obj: object): boolean => {
   for (const key in obj) {
     if (obj.hasOwnProperty(key))
       return false;
@@ -13,7 +13,7 @@ export const isEmpty = (obj) => {
  * @returns {boolean}
  */
 
-export const isElementVisible = (el, verticalOffset = 0) => {
+export const isElementVisible = (el: HTMLElement, verticalOffset: number = 0): boolean => {
   if (!el || 1 !== el.nodeType) {
     return false;
   }
@@ -29,3 +29,8 @@ export const isElementVisible = (el, verticalOffset = 0) => {
     && r.left <= html.clientWidth
   );
 };
+
+export function URLRedirect (url: string): void {
+  window.location.href = url;
+}
+

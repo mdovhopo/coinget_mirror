@@ -2,9 +2,15 @@ import React, {Component} from 'react';
 import {Modal} from "react-bootstrap";
 import "Style/AboutSection";
 
+type Props = {
+    show: boolean
+    onClose: () => void
+    name: string
+}
+
 //  just stub, replace with actual text
 const n = 1000;
-const aboutItemsDescription = {
+const aboutItemsDescription: {[key: string]: string} = {
   left_1: "lorem ispum ".repeat(n),
   left_2: "lorem ispum ".repeat(n),
   left_3: "lorem ispum ".repeat(n),
@@ -13,7 +19,7 @@ const aboutItemsDescription = {
   right_3: "lorem ispum ".repeat(n)
 };
 
-class AboutItemModal extends Component {
+class AboutItemModal extends Component<Props> {
   render() {
     const {show, onClose, name} = this.props;
     const info = aboutItemsDescription[name];

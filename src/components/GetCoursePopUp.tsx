@@ -2,10 +2,17 @@ import React, {Component} from 'react';
 import {Modal} from "react-bootstrap";
 import BasicButton from "Components/BasicButton";
 import "Style/GetCoursePopUp";
-import {CONTENT_LOADING_ERROR, CONTENT_LOADING_IN_PROGRESS, CONTENT_SETTINGS_NOT_COMPLETE} from "Constants/index";
+import {CONTENT_LOADING_ERROR, CONTENT_LOADING_IN_PROGRESS, CONTENT_SETTINGS_NOT_COMPLETE} from "Constants/constants";
 import {PropagateLoader} from "react-spinners";
 
-class GetCoursePopUp extends Component {
+type Props = {
+    show: boolean,
+    onClose: () => void,
+    onErrorText: string,
+    course: string
+}
+
+class GetCoursePopUp extends Component<Props> {
 
 
   _getCourseContent() {
