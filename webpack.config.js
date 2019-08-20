@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './index.js',
+  entry: './index.tsx',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'index.js',
@@ -14,14 +14,14 @@ module.exports = {
   },
   resolve: {
     alias: {
-      Src: path.resolve(__dirname, 'src'),
-      Components: path.resolve(__dirname, 'src/components'),
-      Assets: path.resolve(__dirname, 'src/assets'),
-      Style: path.resolve(__dirname, 'src/style'),
-      react: path.resolve('./node_modules/react'),
-      Redux: path.resolve(__dirname, 'src/redux'),
-      Utils: path.resolve(__dirname, 'src/utils'),
-      Constants: path.resolve(__dirname, 'src/constants')
+      Src:          path.resolve(__dirname, 'src'),
+      Components:   path.resolve(__dirname, 'src/components'),
+      Assets:       path.resolve(__dirname, 'src/assets'),
+      Style:        path.resolve(__dirname, 'src/style'),
+      react:        path.resolve(__dirname, 'node_modules/react'),
+      Redux:        path.resolve(__dirname, 'src/redux'),
+      Utils:        path.resolve(__dirname, 'src/utils'),
+      Constants:    path.resolve(__dirname, 'src/constants')
 
     },
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.json', '.scss', '.sass']
